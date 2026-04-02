@@ -16,8 +16,9 @@
       (function () {
         const root = document.documentElement;
         const saved = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        const shouldUseDark = saved ? saved === "dark" : prefersDark;
+        var shouldUseDark = true;
+        if (saved === "light") shouldUseDark = false;
+        else if (saved === "dark") shouldUseDark = true;
         if (shouldUseDark) root.classList.add("dark");
 
         window.__toggleTheme = function () {
