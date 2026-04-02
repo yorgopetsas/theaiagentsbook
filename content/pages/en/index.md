@@ -10,6 +10,8 @@ summary: Understand how AI agents work, build your own local agent (open source,
 
 This book explains agent systems in technical language, but without assuming prior AI knowledge. You’ll build intuition for what’s happening inside: model outputs, iterative loops, tool calls, and memory/retrieval.
 
+---
+
 ## 2) Build your own agent locally
 
 You will follow a tutorial that produces a working agent on your own computer/VM using open-source components—no paid “agent APIs” required.
@@ -23,9 +25,13 @@ What you will learn how to wire together:
 
 Optional paid libraries and tools can be listed when they help, but the core path stays local and reproducible.
 
+---
+
 ## 3) Conclusions from recent model leak fallout
 
 We include an explicit “so what” section: what we can learn about agent reliability, system design trade-offs, and evaluation from leaked or real-world model information.
+
+---
 
 ## Chapter roadmap (initial draft status)
 
