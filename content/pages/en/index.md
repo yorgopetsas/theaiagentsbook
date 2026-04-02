@@ -40,6 +40,7 @@ We include an explicit “so what” section: what we can learn about agent reli
 - Chapter 8 — Planning & Decomposition (done — deep, recently rewritten)
 - Chapter 9 — Multi-Agent Systems (not written)
 - Chapter 10 — Advanced Systems & Production (not written)
+- Chapter 11 — Tests
 
 ## Newsletter / email capture
 
