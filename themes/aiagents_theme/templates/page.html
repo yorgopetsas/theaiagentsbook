@@ -12,7 +12,7 @@
       prose-hr:my-12 prose-hr:border-white/20
       prose-a:text-indigo-400 hover:prose-a:underline"
   >
-    {{ page.content | add_nofollow_howaiagentswork }}
+    {{ page.content | sectionize_book_content | add_nofollow_howaiagentswork }}
   </div>
 {% endblock %}
 

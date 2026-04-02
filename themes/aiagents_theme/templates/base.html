@@ -145,6 +145,83 @@
       .book-prose h3 + p {
         margin-top: 0.625rem;
       }
+
+      /* Major h2 regions: separate “chapters” inside the article */
+      .book-prose .content-section {
+        margin-bottom: 2rem;
+      }
+      .book-prose .content-section:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-lead {
+        padding: 1.25rem 1.25rem 1.5rem;
+        border-radius: 1rem;
+        border: 1px dashed rgba(99, 102, 241, 0.35);
+        background: linear-gradient(
+          165deg,
+          rgba(99, 102, 241, 0.08) 0%,
+          rgba(6, 6, 10, 0.4) 100%
+        );
+      }
+      .book-prose .content-section-block {
+        padding: 1.5rem 1.35rem 1.75rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(6, 6, 10, 0.55) 100%
+        );
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(0, 0, 0, 0.45);
+      }
+      .book-prose .content-section-block > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* Build track: intro block before Step 0 */
+      .book-prose .content-section-build-intro {
+        padding: 1.5rem 1.35rem 1.75rem;
+        margin-bottom: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(99, 102, 241, 0.28);
+        background: linear-gradient(
+          145deg,
+          rgba(99, 102, 241, 0.1) 0%,
+          rgba(6, 6, 10, 0.5) 100%
+        );
+      }
+      .book-prose .content-section-build-intro > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* One panel per step (jump targets from nav) */
+      .book-prose .content-section-step {
+        padding: 1.35rem 1.25rem 1.6rem;
+        margin-bottom: 1.35rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(8, 8, 14, 0.65);
+        box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.12) inset;
+      }
+      .book-prose .content-section-step:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-step > h3:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        border-left-width: 3px;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+        box-shadow: none;
+        background: linear-gradient(
+          90deg,
+          rgba(99, 102, 241, 0.12) 0%,
+          rgba(255, 255, 255, 0.03) 100%
+        );
+      }
+      .book-prose .content-section-step hr {
+        margin-top: 1.25rem;
+        margin-bottom: 0;
+        opacity: 0.5;
+      }
     </style>
   </body>
 </html>

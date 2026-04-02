@@ -296,7 +296,7 @@
           prose-tr:border-b prose-tr:border-white/10
           prose-code:rounded-md prose-code:border prose-code:border-white/10 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:font-normal prose-code:text-indigo-200
       ">
-        {{ page.content | add_nofollow_howaiagentswork }}
+        {{ page.content | sectionize_book_content | add_nofollow_howaiagentswork }}
       </article>
     </div>
   </div>
