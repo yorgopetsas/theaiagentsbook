@@ -6,34 +6,52 @@ title: The AI Agents Book
 summary: Understand how AI agents work, build your own local agent (open source, private), and extract practical conclusions from recent model leaks.
 ---
 
-## 1) Understand how agents work
-
-This book explains agent systems in technical language, but without assuming prior AI knowledge. You’ll build intuition for what’s happening inside: model outputs, iterative loops, tool calls, and memory/retrieval.
+> **What this is:** one coherent path from *reading* how agents work to *building* one yourself—without hiding behind black-box APIs. The companion site [How AI agents work](https://howaiagentswork.com/en/) publishes longer fragments and chapter-style notes; **this page is the contract**: what you will understand, how the build track stages fit together, and where to read next.
 
 ---
 
-## 2) Build your own agent locally
+## On this site vs. the companion site {#on-this-site}
 
-You will follow a tutorial that produces a working agent on your own computer/VM using open-source components—no paid “agent APIs” required.
+| Here (this book site) | On [howaiagentswork.com](https://howaiagentswork.com/en/) |
+|------------------------|-----------------------------------------------------------|
+| The **map**: promises, roadmap, and the **build track** in order | **Deeper dives**: models, loops, tools, memory, planning—written to stand alone for search and rereading |
+| **Steps 0–10** as a single narrative you will implement | **Fragments** you can enter from Google without reading everything else first |
+| Stays short enough to skim in one sitting | Lets us go long where nuance matters |
 
-What you will learn how to wire together:
-
-- a model (local or private)
-- an agent loop (iteration)
-- tools (actions in the real world)
-- memory + retrieval (scaling beyond context)
-
-Optional paid libraries and tools can be listed when they help, but the core path stays local and reproducible.
+Use this page to decide *whether* to commit; use the companion site when you want *explanation density* on a single topic.
 
 ---
 
-## 3) Conclusions from recent model leak fallout
+## Three reasons to read {#three-reasons}
 
-We include an explicit “so what” section: what we can learn about agent reliability, system design trade-offs, and evaluation from leaked or real-world model information.
+### 1) Understand how agents work
+
+Agents are not “a chatbot with extra vibes.” They are **loops** that couple a model to **state**, **tools**, and (when needed) **memory** and **planning**. This book builds that mental model in plain technical language—**no prior ML coursework assumed**—so you can reason about failure modes, costs, and design trade-offs.
 
 ---
 
-## Chapter roadmap (initial draft status)
+### 2) Build your own agent locally
+
+You will follow a tutorial that produces a **working agent on your machine or VM** using open-source pieces. No paid “agent API” is required for the core path.
+
+What you will learn to wire together:
+
+- a **model** (local, private, or hosted—same code shape)
+- an **agent loop** (iteration and feedback)
+- **tools** (actions that touch the real world)
+- **memory + retrieval** (scaling beyond a single context window)
+
+Hosted APIs (ChatGPT, Claude, …) are optional accelerators; the default stance is **reproducible, inspectable Python**.
+
+---
+
+### 3) Conclusions from recent model leak fallout
+
+We include an explicit **“so what”**: what leaks and real-world releases suggest about **reliability**, **evaluation**, and **system design**—without turning the book into gossip. The point is **engineering judgment**, not headlines.
+
+---
+
+## Chapter roadmap (draft status) {#chapter-roadmap}
 
 - Chapter 0 — Introduction (not written)
 - Chapter 1 — Foundations (not written)
@@ -47,26 +65,36 @@ We include an explicit “so what” section: what we can learn about agent reli
 - Chapter 9 — Multi-Agent Systems (not written)
 - Chapter 10 — Advanced Systems & Production (not written)
 
+Companion reading for several of these themes (same project, different surface):
+
+- **Models & tokens** — intuition for what the model can and cannot see in one pass  
+- **The loop** — why “one-shot” vs “multi-step” changes everything  
+- **Tools** — parsing, safety, and the boundary between language and execution  
+- **Memory & retrieval** — selection, not storage  
+- **Planning** — plans as hypotheses that must survive contact with reality  
+
+Explore those threads on the companion site when you want detail beyond this overview.
+
 ---
 
-## Build track: `build-your-own-agent`
+## Build track: `build-your-own-agent` {#build-track}
 
-Before we add build steps into the book, we lock the **build track architecture** first. The parallel project below is the proposed roadmap: a real codebase you run, inspect, and extend—aligned with the book’s theory chapters.
+Before we fold steps into the book chapters, we lock the **architecture** of the parallel codebase: something you can **run, inspect, and extend**—aligned with the theory above.
 
 **You can run this project:**
 
-- **On your machine** with a local runtime such as **Ollama** (fully private, no cloud required), or  
-- **With hosted models** (e.g. **ChatGPT**, **Claude**, or similar APIs) when you prefer speed or don’t have local GPU—same code shape, different model backend.
+- **On your machine** with a local runtime such as **Ollama** (private, no cloud required), or  
+- **With hosted models** when you want speed or lack local GPU—the **shape of the code stays the same**; only the model backend changes.
 
-The default implementation path is **plain Python first**; frameworks appear later only as optional comparisons so learning stays honest and you don’t hide behind abstractions too early.
+The default path is **plain Python first**. Frameworks appear later as *optional comparisons* so you learn what they abstract **after** you have felt the raw loop.
 
-### How the project grows
+### How the project grows {#how-the-project-grows}
 
-The project grows in **stages**. Each stage gives you something real to run, inspect, and test. The system is **not** rebuilt from scratch each time—it **evolves** step by step, so you see how a simple model call becomes a real agent.
+The project grows in **stages**. Each stage produces something you can run and test. The system is **not** rewritten from scratch each time—it **evolves**, so you watch a single model call turn into something that deserves the word *agent*.
 
 ---
 
-### Step 0 — A bare model call
+### Step 0 — A bare model call {#step-0}
 
 **Goal:** Make the stack feel real immediately—and make the limitations visible.
 
@@ -80,7 +108,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 1 — A stable project skeleton
+### Step 1 — A stable project skeleton {#step-1}
 
 **Goal:** Stop treating the program as a script; treat it as a **system**.
 
@@ -94,7 +122,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 2 — The first agent loop
+### Step 2 — The first agent loop {#step-2}
 
 **Goal:** Turn a one-shot call into a **loop**: act, update state, continue.
 
@@ -108,7 +136,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 3 — Structured outputs and action parsing
+### Step 3 — Structured outputs and action parsing {#step-3}
 
 **Goal:** Move from vague prose to outputs the system can **interpret reliably**.
 
@@ -122,7 +150,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 4 — The first tools
+### Step 4 — The first tools {#step-4}
 
 **Goal:** Let the agent affect or inspect something **outside** the prompt.
 
@@ -136,7 +164,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 5 — Real feedback through command execution
+### Step 5 — Real feedback through command execution {#step-5}
 
 **Goal:** Add **grounded** interaction: run tests, scripts, commands—inspect real behavior.
 
@@ -150,7 +178,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 6 — Memory and retrieval
+### Step 6 — Memory and retrieval {#step-6}
 
 **Goal:** Address **context pressure** as steps and interactions accumulate.
 
@@ -164,7 +192,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 7 — Planning and task decomposition
+### Step 7 — Planning and task decomposition {#step-7}
 
 **Goal:** Move from pure reactivity to **direction**: explicit planning and decomposition.
 
@@ -178,7 +206,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 8 — A more capable coding agent
+### Step 8 — A more capable coding agent {#step-8}
 
 **Goal:** Unify loop, tools, memory, and planning around a **real codebase** use case.
 
@@ -192,7 +220,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 9 — Multi-agent extension
+### Step 9 — Multi-agent extension {#step-9}
 
 **Goal:** Extend the system—don’t replace it—with **roles** (e.g. planner, executor, evaluator).
 
@@ -206,7 +234,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-### Step 10 — Production hardening
+### Step 10 — Production hardening {#step-10}
 
 **Goal:** Shift from educational prototype toward something you can **operate**: reliability, observability, bounded behavior.
 
@@ -220,7 +248,7 @@ The project grows in **stages**. Each stage gives you something real to run, ins
 
 ---
 
-## How the reader experiences progress
+## How the reader experiences progress {#progress-lens}
 
 Each stage answers one concrete question:
 
@@ -238,7 +266,7 @@ That progression keeps the build track motivating: visible results at every stag
 
 ---
 
-## What you need before starting
+## What you need before starting {#prerequisites}
 
 The build track assumes you know **Python**, not AI engineering:
 
@@ -248,24 +276,21 @@ The build track assumes you know **Python**, not AI engineering:
 
 ---
 
-## Why this structure works
+## Why this structure works {#why-it-works}
 
-The book teaches **understanding**. The build track teaches **embodiment**. You don’t only read about loops, tools, memory, and planning—you build the system in an order that makes each piece **necessary**. That coherence is what keeps theory and practice from feeling like two different books.
-
----
-
-## Newsletter / email capture
-
-Email capture comes later. For now, you can track progress through the SEO site fragments and chapter pages.
-
-## Next step
-
-Start with the companion fragments here:
-
-- [howaiagentswork.com — English home](https://howaiagentswork.com/en/)
-
-You can revisit this site later for a `donate` / `support` page when monetization decisions are finalized.
+The book teaches **understanding**. The build track teaches **embodiment**. You don’t only read about loops, tools, memory, and planning—you assemble them in an order where each piece becomes **necessary**. That coherence is what keeps theory and practice from feeling like two different books.
 
 ---
 
-*Optional next editorial pass: tighten each step into a single blueprint block (Goal / Result / Tools / Knowledge / Ready-to-move-on) for Chapter 0 or the companion repo README.*
+## Where to read next {#read-next}
+
+Start with the companion fragments when you want chapter-length depth:
+
+- [English — How AI agents work](https://howaiagentswork.com/en/) — fragments and long-form notes  
+- [Español](https://howaiagentswork.com/es/) — same project, Spanish entry point  
+
+Email capture and donations can layer on later; for now, progress is visible through the companion site and this roadmap.
+
+---
+
+*Optional editorial pass: tighten each step into a single blueprint block (Goal / Result / Tools / Knowledge / Ready-to-move-on) for Chapter 0 or the companion repo README.*
