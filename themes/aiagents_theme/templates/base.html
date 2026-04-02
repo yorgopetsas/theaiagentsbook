@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="{{ (page.lang if page is defined and page.lang else (article.lang if article is defined and article.lang else 'en')) }}" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+
+    <title>
+      {% if page is defined and page.title %}{{ page.title }} - {% endif %}
+      {% if article is defined and article.title %}{{ article.title }} - {% endif %}
+      {{ SITENAME }}
+    </title>
+
+    <meta name="description" content="{{ (page.summary if page is defined and page.summary else (article.summary if article is defined and article.summary else '')) }}" />
+
+    {% if GA4_MEASUREMENT_ID %}
+      <script async src="https://www.googletagmanager.com/gtag/js?id={{ GA4_MEASUREMENT_ID }}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '{{ GA4_MEASUREMENT_ID }}');
+      </script>
+    {% endif %}
+
+    <script>
+      tailwind = window.tailwind || {};
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {}
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      (function () {
+        const root = document.documentElement;
+        const saved = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const shouldUseDark = saved ? saved === "dark" : prefersDark;
+        if (shouldUseDark) root.classList.add("dark");
+
+        window.__toggleTheme = function () {
+          root.classList.toggle("dark");
+          const isDark = root.classList.contains("dark");
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        };
+      })();
+    </script>
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+    <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-slate-900 text-white px-3 py-2 rounded" href="#content">
+      Skip to content
+    </a>
+
+    <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/70 backdrop-blur dark:border-slate-800/70 dark:bg-slate-950/70">
+      <div class="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white font-semibold">
+            AI
+          </div>
+          <div>
+            <div class="text-sm text-slate-600 dark:text-slate-400">AI Agents</div>
+            <div class="font-semibold leading-tight">{{ SITENAME }}</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <nav class="hidden sm:flex items-center gap-3 text-sm">
+            <a class="hover:underline underline-offset-4" href="/en/">EN</a>
+            <a class="hover:underline underline-offset-4" href="/es/">ES</a>
+          </nav>
+
+          <button
+            type="button"
+            class="rounded-lg border border-slate-200 px-3 py-2 text-sm dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800"
+            onclick="window.__toggleTheme && window.__toggleTheme()"
+            aria-label="Toggle dark mode"
+          >
+            Theme
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="mx-auto max-w-5xl px-4 py-10">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="mx-auto max-w-5xl px-4 pb-10 text-sm text-slate-600 dark:text-slate-400">
+      <div class="border-t border-slate-200/70 pt-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>© 2026 {{ SITENAME }}</div>
+          <div class="flex items-center gap-3">
+            <a class="hover:underline underline-offset-4" href="/en/">EN</a>
+            <a class="hover:underline underline-offset-4" href="/es/">ES</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
