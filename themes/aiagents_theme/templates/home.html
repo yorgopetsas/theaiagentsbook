@@ -1,56 +1,147 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="mx-auto max-w-4xl">
+  <div class="mx-auto max-w-6xl">
     {% if page.title %}
-      <!-- Hero -->
-      <header class="not-prose relative mb-14 text-center md:mb-16">
+      <!-- Hero: copy + illustration -->
+      <header class="not-prose relative mb-12 md:mb-16">
         <div class="pointer-events-none absolute -top-8 left-1/2 h-40 w-[120%] -translate-x-1/2 bg-gradient-to-b from-indigo-500/15 to-transparent blur-2xl dark:from-indigo-500/20" aria-hidden="true"></div>
 
-        <p class="relative inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-700 dark:border-indigo-400/25 dark:bg-indigo-500/10 dark:text-indigo-300">
-          <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
-          Book + hands-on build track
-        </p>
+        <div class="relative grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+          <div class="text-center md:text-left">
+            <p class="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-700 dark:border-indigo-400/25 dark:bg-indigo-500/10 dark:text-indigo-300">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
+              Book + hands-on build track
+            </p>
 
-        <h1 class="font-display relative mt-6 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-800 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent dark:from-white dark:via-slate-100 dark:to-indigo-200 sm:text-5xl md:text-[3.25rem]">
-          {{ page.title }}
-        </h1>
+            <h1 class="font-display mt-6 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-800 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent dark:from-white dark:via-slate-100 dark:to-indigo-200 sm:text-5xl lg:text-[3.25rem]">
+              {{ page.title }}
+            </h1>
 
-        {% if page.summary %}
-          <div class="relative mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 [&_p]:m-0">
-            {{ page.summary }}
+            {% if page.summary %}
+              <div class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 md:mx-0 [&_p]:m-0">
+                {{ page.summary }}
+              </div>
+            {% endif %}
+
+            <div class="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 md:justify-start">
+              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Understand agents</span>
+              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Build in Python</span>
+              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Local · Ollama · or APIs</span>
+            </div>
+
+            <div class="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+              <a
+                href="https://howaiagentswork.com/en/"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
+              >
+                Read chapter fragments
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </a>
+              <a
+                href="#book-content"
+                class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-indigo-300 hover:text-indigo-800 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/25 dark:hover:text-white"
+              >
+                Scroll to overview
+              </a>
+              <a
+                href="#overview-video"
+                class="inline-flex items-center justify-center rounded-xl border border-dashed border-slate-300 px-6 py-3 text-sm font-semibold text-slate-600 dark:border-white/20 dark:text-slate-400"
+              >
+                Watch overview
+              </a>
+            </div>
           </div>
-        {% endif %}
 
-        <!-- Feature pills -->
-        <div class="relative mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Understand agents</span>
-          <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Build in Python</span>
-          <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Local · Ollama · or APIs</span>
-        </div>
-
-        <div class="relative mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a
-            href="https://howaiagentswork.com/en/"
-            class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
-          >
-            Read chapter fragments
-            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-          </a>
-          <a
-            href="#book-content"
-            class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-indigo-300 hover:text-indigo-800 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/25 dark:hover:text-white"
-          >
-            Scroll to overview
-          </a>
+          <!-- Hero illustration: agent graph (decorative) -->
+          <div class="relative mx-auto w-full max-w-md md:max-w-none" aria-hidden="true">
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/20 via-transparent to-violet-600/15 blur-2xl dark:from-indigo-500/25"></div>
+            <svg class="relative h-auto w-full drop-shadow-2xl" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heroGrad" x1="40" y1="20" x2="360" y2="300" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6366f1" stop-opacity="0.5" />
+                  <stop offset="0.5" stop-color="#8b5cf6" stop-opacity="0.35" />
+                  <stop offset="1" stop-color="#22d3ee" stop-opacity="0.25" />
+                </linearGradient>
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="8" result="b" />
+                  <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <rect x="24" y="24" width="352" height="272" rx="28" stroke="url(#heroGrad)" stroke-width="1.5" class="opacity-80 dark:opacity-100" />
+              <path d="M80 160 Q200 60 320 160 Q200 260 80 160" stroke="#6366f1" stroke-width="1.2" stroke-opacity="0.35" fill="none" />
+              <path d="M80 160 L200 100 L320 160 L200 220 Z" stroke="#a78bfa" stroke-width="1" stroke-opacity="0.4" fill="none" stroke-dasharray="6 8" />
+              <circle cx="200" cy="160" r="14" fill="#22d3ee" fill-opacity="0.25" stroke="#22d3ee" stroke-width="1.5" filter="url(#glow)" />
+              <circle cx="200" cy="160" r="6" fill="#22d3ee" />
+              <circle cx="200" cy="100" r="10" fill="#818cf8" fill-opacity="0.35" stroke="#a5b4fc" stroke-width="1.2" />
+              <circle cx="200" cy="220" r="10" fill="#8b5cf6" fill-opacity="0.3" stroke="#c4b5fd" stroke-width="1.2" />
+              <circle cx="80" cy="160" r="9" fill="#6366f1" fill-opacity="0.35" stroke="#818cf8" stroke-width="1.2" />
+              <circle cx="320" cy="160" r="9" fill="#6366f1" fill-opacity="0.35" stroke="#818cf8" stroke-width="1.2" />
+              <circle cx="140" cy="200" r="7" fill="#a78bfa" fill-opacity="0.4" />
+              <circle cx="260" cy="200" r="7" fill="#a78bfa" fill-opacity="0.4" />
+              <path d="M200 106v48M200 174v40M92 160h56M252 160h56M140 200l-20-28M260 200l20-28" stroke="#94a3b8" stroke-opacity="0.35" stroke-width="1" stroke-linecap="round" />
+            </svg>
+          </div>
         </div>
       </header>
+
+      <!-- Social proof (placeholder — swap for real logos / quote) -->
+      <section class="not-prose mb-12 md:mb-14" aria-labelledby="social-proof-heading">
+        <h2 id="social-proof-heading" class="sr-only">Social proof</h2>
+        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-500">Readers &amp; builders</p>
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Python · any level</span>
+          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Open source</span>
+          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Your machine / VM</span>
+          <span class="rounded-lg border border-dashed border-slate-300 px-4 py-2 text-xs font-medium text-slate-400 dark:border-white/20 dark:text-slate-500">Your logo here</span>
+        </div>
+        <figure class="mx-auto mt-8 max-w-2xl text-center">
+          <blockquote class="font-display text-base font-medium leading-relaxed text-slate-700 dark:text-slate-300">
+            “Placeholder testimonial — replace with a real reader quote when you have one.”
+          </blockquote>
+          <figcaption class="mt-3 text-xs text-slate-500 dark:text-slate-500">— Early reader (name TBD)</figcaption>
+        </figure>
+      </section>
+
+      <!-- Video placeholder (embed URL when ready) -->
+      <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-slate-900 dark:text-white">2-minute overview</h2>
+            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">A short intro to the book and the build track. Recording coming soon.</p>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-500">YouTube · Vimeo · or self-hosted MP4</p>
+        </div>
+        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-900 shadow-2xl ring-1 ring-slate-900/5 dark:border-white/10 dark:bg-[#0a0a12] dark:ring-white/5">
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-950/90 to-violet-950/80"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
+            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-indigo-400/60 backdrop-blur-sm">
+              <svg class="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            </div>
+            <div>
+              <p class="font-display text-base font-semibold text-white">Video placeholder</p>
+              <p class="mt-1 max-w-md text-sm text-slate-400">Paste your embed code or iframe below in the template when the recording is ready.</p>
+            </div>
+            <button
+              type="button"
+              class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-slate-200 backdrop-blur transition hover:bg-white/15"
+              disabled
+              aria-disabled="true"
+            >
+              Play (coming soon)
+            </button>
+          </div>
+          <!-- Hook: replace this comment with iframe, e.g.:
+          <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/VIDEO_ID" title="Overview" allowfullscreen loading="lazy"></iframe>
+          -->
+        </div>
+      </section>
     {% endif %}
 
     <!-- Glass content card -->
     <div
       id="book-content"
-      class="relative rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-xl shadow-slate-200/50 ring-1 ring-slate-900/5 dark:border-white/10 dark:bg-[#0c0c14]/80 dark:shadow-2xl dark:shadow-indigo-950/40 dark:ring-white/5 md:p-10 lg:p-12"
+      class="relative mx-auto max-w-4xl rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-xl shadow-slate-200/50 ring-1 ring-slate-900/5 dark:border-white/10 dark:bg-[#0c0c14]/80 dark:shadow-2xl dark:shadow-indigo-950/40 dark:ring-white/5 md:p-10 lg:p-12"
     >
       <div class="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-white/20 to-transparent opacity-50 dark:from-white/[0.07] dark:to-transparent" aria-hidden="true"></div>
 
