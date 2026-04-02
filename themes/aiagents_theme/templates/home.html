@@ -5,29 +5,29 @@
     {% if page.title %}
       <!-- Hero: copy + illustration -->
       <header class="not-prose relative mb-12 md:mb-16">
-        <div class="pointer-events-none absolute -top-8 left-1/2 h-40 w-[120%] -translate-x-1/2 bg-gradient-to-b from-indigo-500/15 to-transparent blur-2xl dark:from-indigo-500/20" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute -top-8 left-1/2 h-40 w-[120%] -translate-x-1/2 bg-gradient-to-b from-indigo-500/20 to-transparent blur-2xl" aria-hidden="true"></div>
 
         <div class="relative grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
           <div class="text-center md:text-left">
-            <p class="inline-flex items-center gap-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-700 dark:border-indigo-400/25 dark:bg-indigo-500/10 dark:text-indigo-300">
+            <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-300">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
               Book + hands-on build track
             </p>
 
-            <h1 class="font-display mt-6 bg-gradient-to-br from-slate-900 via-slate-800 to-indigo-800 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent dark:from-white dark:via-slate-100 dark:to-indigo-200 sm:text-5xl lg:text-[3.25rem]">
+            <h1 class="font-display mt-6 bg-gradient-to-br from-white via-slate-100 to-indigo-200 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent sm:text-5xl lg:text-[3.25rem]">
               {{ page.title }}
             </h1>
 
             {% if page.summary %}
-              <div class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600 dark:text-slate-400 md:mx-0 [&_p]:m-0">
+              <div class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-400 md:mx-0 [&_p]:m-0">
                 {{ page.summary }}
               </div>
             {% endif %}
 
             <div class="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 md:justify-start">
-              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Understand agents</span>
-              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Build in Python</span>
-              <span class="rounded-full border border-slate-200/80 bg-white/80 px-3 py-1 text-xs font-medium text-slate-600 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-300">Local · Ollama · or APIs</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Understand agents</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Build in Python</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Local · Ollama · or APIs</span>
             </div>
 
             <div class="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-center md:justify-start">
@@ -40,13 +40,13 @@
               </a>
               <a
                 href="#book-content"
-                class="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:border-indigo-300 hover:text-indigo-800 dark:border-white/15 dark:bg-white/5 dark:text-slate-200 dark:hover:border-white/25 dark:hover:text-white"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:text-white"
               >
                 Scroll to overview
               </a>
               <a
                 href="#overview-video"
-                class="inline-flex items-center justify-center rounded-xl border border-dashed border-slate-300 px-6 py-3 text-sm font-semibold text-slate-600 dark:border-white/20 dark:text-slate-400"
+                class="inline-flex items-center justify-center rounded-xl border border-dashed border-white/20 px-6 py-3 text-sm font-semibold text-slate-400"
               >
                 Watch overview
               </a>
@@ -55,7 +55,7 @@
 
           <!-- Hero illustration: agent graph (decorative) -->
           <div class="relative mx-auto w-full max-w-md md:max-w-none" aria-hidden="true">
-            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/20 via-transparent to-violet-600/15 blur-2xl dark:from-indigo-500/25"></div>
+            <div class="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/25 via-transparent to-violet-600/15 blur-2xl"></div>
             <svg class="relative h-auto w-full drop-shadow-2xl" viewBox="0 0 400 320" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="heroGrad" x1="40" y1="20" x2="360" y2="300" gradientUnits="userSpaceOnUse">
@@ -68,7 +68,7 @@
                   <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
                 </filter>
               </defs>
-              <rect x="24" y="24" width="352" height="272" rx="28" stroke="url(#heroGrad)" stroke-width="1.5" class="opacity-80 dark:opacity-100" />
+              <rect x="24" y="24" width="352" height="272" rx="28" stroke="url(#heroGrad)" stroke-width="1.5" opacity="1" />
               <path d="M80 160 Q200 60 320 160 Q200 260 80 160" stroke="#6366f1" stroke-width="1.2" stroke-opacity="0.35" fill="none" />
               <path d="M80 160 L200 100 L320 160 L200 220 Z" stroke="#a78bfa" stroke-width="1" stroke-opacity="0.4" fill="none" stroke-dasharray="6 8" />
               <circle cx="200" cy="160" r="14" fill="#22d3ee" fill-opacity="0.25" stroke="#22d3ee" stroke-width="1.5" filter="url(#glow)" />
@@ -88,18 +88,18 @@
       <!-- Social proof (placeholder — swap for real logos / quote) -->
       <section class="not-prose mb-12 md:mb-14" aria-labelledby="social-proof-heading">
         <h2 id="social-proof-heading" class="sr-only">Social proof</h2>
-        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-500">Readers &amp; builders</p>
+        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">Readers &amp; builders</p>
         <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Python · any level</span>
-          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Open source</span>
-          <span class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/5 dark:text-slate-400">Your machine / VM</span>
-          <span class="rounded-lg border border-dashed border-slate-300 px-4 py-2 text-xs font-medium text-slate-400 dark:border-white/20 dark:text-slate-500">Your logo here</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Python · any level</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Open source</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Your machine / VM</span>
+          <span class="rounded-lg border border-dashed border-white/20 px-4 py-2 text-xs font-medium text-slate-500">Your logo here</span>
         </div>
         <figure class="mx-auto mt-8 max-w-2xl text-center">
-          <blockquote class="font-display text-base font-medium leading-relaxed text-slate-700 dark:text-slate-300">
+          <blockquote class="font-display text-base font-medium leading-relaxed text-slate-300">
             “Placeholder testimonial — replace with a real reader quote when you have one.”
           </blockquote>
-          <figcaption class="mt-3 text-xs text-slate-500 dark:text-slate-500">— Early reader (name TBD)</figcaption>
+          <figcaption class="mt-3 text-xs text-slate-500">— Early reader (name TBD)</figcaption>
         </figure>
       </section>
 
@@ -107,20 +107,56 @@
       <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="overview-video-title" class="font-display text-lg font-bold text-slate-900 dark:text-white">2-minute overview</h2>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-400">A short intro to the book and the build track. Recording coming soon.</p>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">2-minute overview</h2>
+            <p class="mt-1 text-sm text-slate-400">A short intro to the book and the build track. Recording coming soon.</p>
           </div>
-          <p class="text-xs text-slate-500 dark:text-slate-500">YouTube · Vimeo · or self-hosted MP4</p>
+          <p class="text-xs text-slate-500">YouTube · Vimeo · or self-hosted MP4</p>
         </div>
-        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-900 shadow-2xl ring-1 ring-slate-900/5 dark:border-white/10 dark:bg-[#0a0a12] dark:ring-white/5">
+        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a12] shadow-2xl ring-1 ring-white/5">
           <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-950/90 to-violet-950/80"></div>
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8 text-center">
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-5 p-6 text-center sm:gap-6 sm:p-8">
+            <!-- Stack / toolchain icons (decorative) -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-hidden="true">
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-cyan-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M7 7v10M17 7v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+                </svg>
+                Stack
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 9l-3 3 3 3M16 15l3-3-3-3M14 6l-4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Python
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-violet-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M4 12h2M18 12h2M12 4v2M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+                </svg>
+                Local LLM
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none" />
+                </svg>
+                APIs
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-1.5 text-[11px] font-medium text-indigo-200">
+                <svg class="h-4 w-4 shrink-0 text-indigo-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Video
+              </span>
+            </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-indigo-400/60 backdrop-blur-sm">
               <svg class="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
             </div>
             <div>
               <p class="font-display text-base font-semibold text-white">Video placeholder</p>
-              <p class="mt-1 max-w-md text-sm text-slate-400">Paste your embed code or iframe below in the template when the recording is ready.</p>
+              <p class="mt-1 max-w-md text-sm text-slate-400">Paste your embed or iframe in the template when the recording is ready.</p>
             </div>
             <button
               type="button"
@@ -131,7 +167,7 @@
               Play (coming soon)
             </button>
           </div>
-          <!-- Hook: replace this comment with iframe, e.g.:
+          <!-- Hook: replace overlay block with iframe, e.g.:
           <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/VIDEO_ID" title="Overview" allowfullscreen loading="lazy"></iframe>
           -->
         </div>
@@ -141,28 +177,28 @@
     <!-- Glass content card -->
     <div
       id="book-content"
-      class="relative mx-auto max-w-4xl rounded-[1.75rem] border border-slate-200/90 bg-white/90 p-6 shadow-xl shadow-slate-200/50 ring-1 ring-slate-900/5 dark:border-white/10 dark:bg-[#0c0c14]/80 dark:shadow-2xl dark:shadow-indigo-950/40 dark:ring-white/5 md:p-10 lg:p-12"
+      class="relative mx-auto max-w-4xl rounded-[1.75rem] border border-white/10 bg-[#0c0c14]/90 p-6 shadow-2xl shadow-indigo-950/40 ring-1 ring-white/5 md:p-10 lg:p-12"
     >
-      <div class="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-white/20 to-transparent opacity-50 dark:from-white/[0.07] dark:to-transparent" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-white/[0.07] to-transparent opacity-50" aria-hidden="true"></div>
 
       <article
-        class="relative prose prose-slate max-w-none dark:prose-invert
-          prose-headings:font-display prose-headings:scroll-mt-24 prose-headings:font-semibold prose-headings:tracking-tight
-          prose-h2:mt-12 prose-h2:mb-4 prose-h2:border-b prose-h2:border-slate-200/90 prose-h2:pb-3 prose-h2:text-[1.35rem] prose-h2:leading-snug prose-h2:text-slate-900 dark:prose-h2:border-white/10 dark:prose-h2:text-white
-          prose-h2:first:mt-0 prose-h2:first:border-0 prose-h2:first:pb-0
-          prose-h3:mt-9 prose-h3:mb-3 prose-h3:rounded-r-xl prose-h3:border-l-[3px] prose-h3:border-indigo-500 prose-h3:bg-gradient-to-r prose-h3:from-indigo-500/10 prose-h3:to-transparent prose-h3:py-2 prose-h3:pl-4 prose-h3:text-lg prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-800 dark:prose-h3:border-indigo-400 dark:prose-h3:from-indigo-500/15 dark:prose-h3:text-slate-100
-          prose-p:mb-4 prose-p:leading-relaxed prose-p:text-[1.05rem] prose-p:text-slate-700 dark:prose-p:text-slate-300
-          prose-strong:font-semibold prose-strong:text-slate-900 dark:prose-strong:text-white
-          prose-ul:my-5 prose-ul:space-y-2 prose-li:marker:text-indigo-500 dark:prose-li:marker:text-indigo-400
+        class="book-prose relative prose prose-invert max-w-none prose-slate
+          prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight
+          prose-h2:scroll-mt-28 prose-h2:mt-14 prose-h2:mb-8 prose-h2:border-b prose-h2:border-indigo-500/45 prose-h2:pb-4 prose-h2:text-xl prose-h2:leading-snug prose-h2:text-white md:prose-h2:mt-16 md:prose-h2:text-[1.4rem]
+          prose-h2:first:mt-0
+          prose-h3:scroll-mt-28 prose-h3:mt-12 prose-h3:mb-5 prose-h3:rounded-xl prose-h3:border prose-h3:border-white/12 prose-h3:border-l-[4px] prose-h3:border-l-indigo-500 prose-h3:bg-gradient-to-br prose-h3:from-white/[0.07] prose-h3:to-indigo-950/30 prose-h3:px-5 prose-h3:py-4 prose-h3:shadow-lg prose-h3:shadow-black/25 prose-h3:ring-1 prose-h3:ring-inset prose-h3:ring-white/[0.06] prose-h3:text-base prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-50 md:prose-h3:text-lg
+          prose-p:mb-4 prose-p:leading-relaxed prose-p:text-[1.05rem] prose-p:text-slate-300
+          prose-strong:font-semibold prose-strong:text-white
+          prose-ul:my-5 prose-ul:space-y-2 prose-ul:pl-1 prose-li:marker:text-indigo-400
           prose-li:leading-relaxed
-          prose-hr:my-10 prose-hr:border-slate-200 dark:prose-hr:border-white/10
-          prose-a:font-medium prose-a:text-indigo-600 prose-a:no-underline hover:prose-a:underline dark:prose-a:text-indigo-400
-          prose-table:block prose-table:overflow-x-auto prose-table:rounded-xl prose-table:border prose-table:border-slate-200 dark:prose-table:border-white/10
-          prose-thead:bg-slate-100 dark:prose-thead:bg-white/5
+          prose-hr:my-12 prose-hr:border-t prose-hr:border-white/20
+          prose-a:font-medium prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline
+          prose-table:block prose-table:overflow-x-auto prose-table:rounded-xl prose-table:border prose-table:border-white/10
+          prose-thead:bg-white/5
           prose-th:text-left prose-th:px-4 prose-th:py-3 prose-th:text-sm prose-th:font-semibold
           prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:align-top
-          prose-tr:border-b prose-tr:border-slate-200 dark:prose-tr:border-white/10
-          prose-code:rounded-md prose-code:border prose-code:border-slate-200 prose-code:bg-slate-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:font-normal prose-code:text-indigo-800 dark:prose-code:border-white/10 dark:prose-code:bg-white/5 dark:prose-code:text-indigo-200
+          prose-tr:border-b prose-tr:border-white/10
+          prose-code:rounded-md prose-code:border prose-code:border-white/10 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:font-normal prose-code:text-indigo-200
       ">
         {{ page.content }}
       </article>
