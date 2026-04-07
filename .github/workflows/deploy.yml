@@ -3,6 +3,7 @@ name: Deploy book site (Pelican)
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch: {}
 
 permissions:
   contents: write
