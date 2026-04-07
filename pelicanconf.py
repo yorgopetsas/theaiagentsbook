@@ -12,8 +12,8 @@ PATH = "content"
 TIMEZONE = "Europe/Madrid"
 DEFAULT_LANG = "en"
 
-# GA4 Measurement ID is intentionally disabled until you provide it.
-GA4_MEASUREMENT_ID = ""
+# GA4 Measurement ID
+GA4_MEASUREMENT_ID = "G-7FZ2XTFXJB"
 
 THEME = "simple"
 EXTRA_TEMPLATES_PATHS = ["themes/aiagents_theme/templates"]
