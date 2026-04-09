@@ -46,6 +46,9 @@
     <script>
       document.documentElement.classList.add("dark");
     </script>
+    <script>
+      window.__LEAD_API_URL = "{{ LEAD_API_URL }}";
+    </script>
   </head>
 
   <body class="relative min-h-screen bg-[#06060a] font-sans text-slate-200 antialiased">
@@ -223,5 +226,57 @@
         opacity: 0.5;
       }
     </style>
+    <script>
+      (function () {
+        async function submitLead(form) {
+          const endpoint = (window.__LEAD_API_URL || "").trim();
+          const actionUrl = form.getAttribute("action") || "";
+          const payload = Object.fromEntries(new FormData(form).entries());
+          payload.audience = form.dataset.audience || payload.audience || "unknown";
+          payload.landing = window.location.pathname;
+          payload.timestamp = new Date().toISOString();
+
+          // Extract UTM from action URL so analytics context stays consistent.
+          try {
+            const u = new URL(actionUrl, window.location.origin);
+            ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach((k) => {
+              const v = u.searchParams.get(k);
+              if (v) payload[k] = v;
+            });
+          } catch (_) {}
+
+          if (!endpoint) return false;
+          try {
+            const res = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            return res.ok;
+          } catch (_) {
+            return false;
+          }
+        }
+
+        document.addEventListener("submit", async function (e) {
+          const form = e.target;
+          if (!(form instanceof HTMLFormElement) || !form.matches("form[data-lead-form]")) return;
+          e.preventDefault();
+          const actionUrl = form.getAttribute("action") || "/";
+          const target = form.getAttribute("target") || "_blank";
+          const button = form.querySelector('button[type="submit"]');
+          if (button) {
+            button.setAttribute("disabled", "disabled");
+            button.classList.add("opacity-70", "cursor-not-allowed");
+          }
+          await submitLead(form);
+          window.open(actionUrl, target);
+          if (button) {
+            button.removeAttribute("disabled");
+            button.classList.remove("opacity-70", "cursor-not-allowed");
+          }
+        });
+      })();
+    </script>
   </body>
 </html>

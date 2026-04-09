@@ -15,6 +15,10 @@ DEFAULT_LANG = "en"
 # GA4 Measurement ID
 GA4_MEASUREMENT_ID = "G-7FZ2XTFXJB"
 
+# Optional lead capture API endpoint (e.g. Cloudflare Worker URL).
+# Leave empty to keep download-only behavior.
+LEAD_API_URL = ""
+
 THEME = "simple"
 EXTRA_TEMPLATES_PATHS = ["themes/aiagents_theme/templates"]
 
