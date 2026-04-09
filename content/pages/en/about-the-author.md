@@ -8,8 +8,6 @@ url: en/about-the-author/
 save_as: en/about-the-author/index.html
 ---
 
-## Yorgo Petsas
-
 Multilingual IT and eCommerce professional based in **Barcelona, Catalonia, Spain**. Head of eCommerce Digital Innovation at **EDEL (Electrónica de Elevadores, S.L.)**, with a long track record across online retail, technical delivery, and cross-functional leadership.
 
 [View profile on LinkedIn](https://www.linkedin.com/in/yorgopetsas/){: target="_blank" rel="noopener noreferrer"} · [GitHub](https://github.com/yorgopetsas){: target="_blank" rel="noopener noreferrer"}

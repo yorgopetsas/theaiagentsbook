@@ -8,6 +8,9 @@ AUTHOR = "EdelConnect"
 SITENAME = "The AI Agents Book"
 SITEURL = ""
 
+# Author headshot: place the file in content/images/ (same filename as below).
+AUTHOR_PHOTO = "/images/yorgo_petsas_aiagentsbook.jpg"
+
 PATH = "content"
 TIMEZONE = "Europe/Madrid"
 DEFAULT_LANG = "en"
@@ -34,7 +37,7 @@ PAGE_PATHS = ["pages"]
 ARTICLE_PATHS = ["posts"]
 
 # Copy Spanish placeholder to /es/.
-STATIC_PATHS = ["es", "downloads"]
+STATIC_PATHS = ["es", "downloads", "images"]
 
 RELATIVE_URLS = True
 
