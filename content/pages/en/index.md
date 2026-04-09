@@ -53,17 +53,17 @@ We include an explicit **“so what”**: what leaks and real-world releases sug
 
 ## Chapter roadmap (draft status) {#chapter-roadmap}
 
-- Chapter 0 — Introduction (not written)
-- Chapter 1 — Foundations (not written)
-- Chapter 2 — How Models Work (done — deep)
-- Chapter 3 — System Architecture (not written)
-- Chapter 4 — Environment & Setup (not written)
-- Chapter 5 — The Agent Loop (done — deep)
-- Chapter 6 — Tool Systems (partially deep — needs full rewrite)
-- Chapter 7 — Memory & Retrieval (done — deep)
-- Chapter 8 — Planning & Decomposition (done — deep, recently rewritten)
-- Chapter 9 — Multi-Agent Systems (not written)
-- Chapter 10 — Advanced Systems & Production (not written)
+- Chapter 0 — Introduction
+- Chapter 1 — Foundations
+- Chapter 2 — How Models Work
+- Chapter 3 — System Architecture
+- Chapter 4 — Environment & Setup
+- Chapter 5 — The Agent Loop
+- Chapter 6 — Tool Systems
+- Chapter 7 — Memory & Retrieval
+- Chapter 8 — Planning & Decomposition
+- Chapter 9 — Multi-Agent Systems
+- Chapter 10 — Advanced Systems & Production
 
 Companion reading for several of these themes (same project, different surface):
 
@@ -97,6 +97,7 @@ The project grows in **stages**. Each stage produces something you can run and t
 ### Step 0 — A bare model call {#step-0}
 
 **Goal:** Make the stack feel real immediately—and make the limitations visible.
+
 
 **Result:** The smallest program that sends a prompt to a model and gets a response. No loop, tools, memory, or planning yet. Exciting because it works; underwhelming because it’s only a single exchange—that contrast is the baseline.
 
