@@ -30,7 +30,7 @@ PAGE_PATHS = ["pages"]
 ARTICLE_PATHS = ["posts"]
 
 # Copy Spanish placeholder to /es/.
-STATIC_PATHS = ["es"]
+STATIC_PATHS = ["es", "downloads"]
 
 RELATIVE_URLS = True
 
