@@ -228,6 +228,21 @@
     </style>
     <script>
       (function () {
+        function stampLeadForms() {
+          const now = Date.now().toString();
+          document.querySelectorAll("form[data-lead-form] input[name='form_started_at']").forEach((el) => {
+            if (!el.value) el.value = now;
+          });
+        }
+
+        function isLikelySpam(form) {
+          const honeypot = form.querySelector("input[name='website']");
+          if (honeypot && honeypot.value && honeypot.value.trim()) return true;
+          const startedAt = Number((form.querySelector("input[name='form_started_at']") || {}).value || 0);
+          if (startedAt > 0 && Date.now() - startedAt < 2500) return true;
+          return false;
+        }
+
         async function submitLead(form) {
           const endpoint = (window.__LEAD_API_URL || "").trim();
           const actionUrl = form.getAttribute("action") || "";
@@ -262,6 +277,7 @@
           const form = e.target;
           if (!(form instanceof HTMLFormElement) || !form.matches("form[data-lead-form]")) return;
           e.preventDefault();
+          if (isLikelySpam(form)) return;
           const actionUrl = form.getAttribute("action") || "/";
           const target = form.getAttribute("target") || "_blank";
           const button = form.querySelector('button[type="submit"]');
@@ -276,6 +292,7 @@
             button.classList.remove("opacity-70", "cursor-not-allowed");
           }
         });
+        stampLeadForms();
       })();
     </script>
   </body>
