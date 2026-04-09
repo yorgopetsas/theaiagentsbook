@@ -17,7 +17,7 @@ GA4_MEASUREMENT_ID = "G-7FZ2XTFXJB"
 
 # Optional lead capture API endpoint (e.g. Cloudflare Worker URL).
 # Leave empty to keep download-only behavior.
-LEAD_API_URL = ""
+LEAD_API_URL = "https://aiagents-leads-api.yorgopecas.workers.dev/lead"
 
 THEME = "simple"
 EXTRA_TEMPLATES_PATHS = ["themes/aiagents_theme/templates"]
