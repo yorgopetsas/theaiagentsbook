@@ -53,6 +53,36 @@
 
   <body class="relative min-h-screen bg-[#06060a] font-sans text-slate-200 antialiased">
     {% set P_LANG = page.lang if page is defined and page and page.lang else (article.lang if article is defined and article and article.lang else 'en') %}
+    {% set LANG_HREF = namespace(en='/en/', es='/es/') %}
+    {% if page is defined and page %}
+      {% if page.lang == 'en' %}
+        {% set LANG_HREF.en = '/' ~ page.url %}
+      {% else %}
+        {% set LANG_HREF.es = '/' ~ page.url %}
+      {% endif %}
+      {% for tr in page.translations %}
+        {% if tr.lang == 'en' %}
+          {% set LANG_HREF.en = '/' ~ tr.url %}
+        {% endif %}
+        {% if tr.lang == 'es' %}
+          {% set LANG_HREF.es = '/' ~ tr.url %}
+        {% endif %}
+      {% endfor %}
+    {% elif article is defined and article %}
+      {% if article.lang == 'en' %}
+        {% set LANG_HREF.en = '/' ~ article.url %}
+      {% else %}
+        {% set LANG_HREF.es = '/' ~ article.url %}
+      {% endif %}
+      {% for tr in article.translations %}
+        {% if tr.lang == 'en' %}
+          {% set LANG_HREF.en = '/' ~ tr.url %}
+        {% endif %}
+        {% if tr.lang == 'es' %}
+          {% set LANG_HREF.es = '/' ~ tr.url %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
     <!-- Ambient mesh + grid (always on — site is dark-only) -->
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
       <div class="absolute -top-32 left-[10%] h-[28rem] w-[28rem] rounded-full bg-indigo-600/25 blur-[120px]"></div>
@@ -98,9 +128,12 @@
           </a>
           <nav class="flex flex-wrap items-center justify-end gap-1 rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium sm:flex-nowrap">
             <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/chapters/">{% if P_LANG == 'es' %}Capítulos{% else %}Chapters{% endif %}</a>
-            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/about-the-author/">{% if P_LANG == 'es' %}Sobre el autor{% else %}About The Author{% endif %}</a>
-            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/en/">EN</a>
-            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/">ES</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/exercise/">{% if P_LANG == 'es' %}Ejercicio{% else %}Exercise{% endif %}</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/about-the-author/">{% if P_LANG == 'es' %}Sobre el autor{% else %}About{% endif %}</a>
+            <span class="inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-[#0a0a10]/80 p-0.5">
+              <a class="rounded-full px-2.5 py-1 transition {% if P_LANG == 'en' %}bg-white/15 font-semibold text-white{% else %}text-slate-400 hover:bg-white/10 hover:text-white{% endif %}" href="{{ LANG_HREF.en }}" {% if P_LANG == 'en' %}aria-current="true"{% endif %}>EN</a>
+              <a class="rounded-full px-2.5 py-1 transition {% if P_LANG == 'es' %}bg-white/15 font-semibold text-white{% else %}text-slate-400 hover:bg-white/10 hover:text-white{% endif %}" href="{{ LANG_HREF.es }}" {% if P_LANG == 'es' %}aria-current="true"{% endif %}>ES</a>
+            </span>
           </nav>
         </div>
       </div>
@@ -138,9 +171,10 @@
         </div>
         <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
           <a class="hover:text-indigo-400" href="/{{ P_LANG }}/chapters/">{% if P_LANG == 'es' %}Capítulos{% else %}Chapters{% endif %}</a>
+          <a class="hover:text-indigo-400" href="/{{ P_LANG }}/exercise/">{% if P_LANG == 'es' %}Ejercicio{% else %}Exercise{% endif %}</a>
           <a class="hover:text-indigo-400" href="/{{ P_LANG }}/about-the-author/">{% if P_LANG == 'es' %}Sobre el autor{% else %}About the author{% endif %}</a>
-          <a class="hover:text-indigo-400" href="/en/">English</a>
-          <a class="hover:text-indigo-400" href="/es/">Español</a>
+          <a class="hover:text-indigo-400" href="{{ LANG_HREF.en }}">English</a>
+          <a class="hover:text-indigo-400" href="{{ LANG_HREF.es }}">Español</a>
           <a class="hover:text-indigo-400" href="https://howaiagentswork.com/{{ P_LANG }}/" rel="nofollow noopener noreferrer">{% if P_LANG == 'es' %}Cómo funcionan los agentes de IA{% else %}How AI Agents Work{% endif %}</a>
         </div>
         <div class="text-xs text-slate-500">© 2026</div>

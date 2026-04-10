@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% set L = page.lang | default('en') %}
+  <div class="mx-auto max-w-6xl">
+    <header class="not-prose mb-10 md:mb-12">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Práctica guiada{% else %}Hands-on track{% endif %}</p>
+      <h1 class="font-display mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-[2.35rem]">{{ page.title }}</h1>
+      {% if page.summary %}
+        <div class="mt-4 max-w-3xl text-base leading-relaxed text-slate-400 [&_p]:m-0">{{ page.summary }}</div>
+      {% endif %}
+    </header>
+
+    <section class="not-prose mb-12 md:mb-14" id="build-steps-nav" aria-labelledby="steps-nav-heading">
+      <div>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{% if L == 'es' %}Hoja de construcción{% else %}Build track{% endif %}</p>
+        <h2 id="steps-nav-heading" class="font-display text-xl font-bold text-white md:text-2xl">{% if L == 'es' %}Ir a un paso (0–10){% else %}Jump to a step (0–10){% endif %}</h2>
+        <p class="mt-2 max-w-3xl text-sm text-slate-400">
+          {% if L == 'es' %}
+          Cada paso añade una capa: desde una llamada mínima al modelo hasta endurecimiento orientado a producción.
+          {% else %}
+          Each step adds one layer: from a bare model call to production-shaped hardening.
+          {% endif %}
+        </p>
+      </div>
+      <div class="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <a href="#step-0" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">0</span>{% if L == 'es' %}Llamada al modelo{% else %}Bare model call{% endif %}</a>
+        <a href="#step-1" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">1</span>{% if L == 'es' %}Esqueleto del proyecto{% else %}Project skeleton{% endif %}</a>
+        <a href="#step-2" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">2</span>{% if L == 'es' %}Bucle del agente{% else %}Agent loop{% endif %}</a>
+        <a href="#step-3" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">3</span>{% if L == 'es' %}Salida estructurada{% else %}Structured output{% endif %}</a>
+        <a href="#step-4" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">4</span>{% if L == 'es' %}Primeras herramientas{% else %}First tools{% endif %}</a>
+        <a href="#step-5" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">5</span>{% if L == 'es' %}Comandos{% else %}Commands{% endif %}</a>
+        <a href="#step-6" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">6</span>{% if L == 'es' %}Memoria{% else %}Memory{% endif %}</a>
+        <a href="#step-7" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">7</span>{% if L == 'es' %}Planificación{% else %}Planning{% endif %}</a>
+        <a href="#step-8" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">8</span>{% if L == 'es' %}Agente de código{% else %}Coding agent{% endif %}</a>
+        <a href="#step-9" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">9</span>{% if L == 'es' %}Multiagente{% else %}Multi-agent{% endif %}</a>
+        <a href="#step-10" class="rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-center text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/50 hover:text-white sm:col-span-2 lg:col-span-1"><span class="mb-1 block text-[10px] font-bold uppercase tracking-wider text-indigo-400">10</span>{% if L == 'es' %}Producción{% else %}Production{% endif %}</a>
+      </div>
+      <p class="mt-6 text-center text-xs text-slate-500">
+        <a href="/{{ L }}/chapters/" class="font-medium text-indigo-400 hover:text-indigo-300">{% if L == 'es' %}Índice de capítulos{% else %}Chapter index{% endif %}</a>
+        <span class="mx-2 text-slate-600">·</span>
+        <a href="/{{ L }}/" class="font-medium text-indigo-400 hover:text-indigo-300">{% if L == 'es' %}Inicio del libro{% else %}Book home{% endif %}</a>
+      </p>
+    </section>
+
+    <div
+      id="book-content"
+      class="relative mx-auto max-w-4xl rounded-[1.75rem] border border-white/10 bg-[#0c0c14]/90 p-6 shadow-2xl shadow-indigo-950/40 ring-1 ring-white/5 md:p-10 lg:p-12"
+    >
+      <div class="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-white/[0.07] to-transparent opacity-50" aria-hidden="true"></div>
+      <article
+        class="book-prose relative prose prose-invert max-w-none prose-slate
+          prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight
+          prose-h2:scroll-mt-28 prose-h2:mt-16 prose-h2:mb-8 prose-h2:border-b prose-h2:border-indigo-500/55 prose-h2:pb-4 prose-h2:text-2xl prose-h2:font-bold prose-h2:leading-snug prose-h2:text-white md:prose-h2:mt-20 md:prose-h2:text-[1.65rem]
+          prose-h2:first:mt-0
+          prose-h3:scroll-mt-28 prose-h3:mt-14 prose-h3:mb-6 prose-h3:rounded-xl prose-h3:border prose-h3:border-white/14 prose-h3:border-l-[4px] prose-h3:border-l-indigo-400 prose-h3:bg-gradient-to-br prose-h3:from-white/[0.09] prose-h3:to-indigo-950/35 prose-h3:px-5 prose-h3:py-4 prose-h3:shadow-lg prose-h3:shadow-black/30 prose-h3:ring-1 prose-h3:ring-inset prose-h3:ring-white/[0.08] prose-h3:text-lg prose-h3:font-bold prose-h3:leading-snug prose-h3:text-slate-50 md:prose-h3:text-xl
+          prose-p:mb-4 prose-p:leading-relaxed prose-p:text-[1.05rem] prose-p:text-slate-300
+          prose-strong:font-semibold prose-strong:text-white
+          prose-hr:my-12 prose-hr:border-t prose-hr:border-white/20
+          prose-a:font-medium prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline
+          prose-table:block prose-table:overflow-x-auto prose-table:rounded-xl prose-table:border prose-table:border-white/10
+          prose-th:text-left prose-th:px-4 prose-th:py-3 prose-th:text-sm prose-th:font-semibold
+          prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:align-top
+          prose-tr:border-b prose-tr:border-white/10
+      ">
+        {{ page.content | sectionize_book_content | add_nofollow_howaiagentswork }}
+      </article>
+    </div>
+  </div>
+{% endblock %}
