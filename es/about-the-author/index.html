@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+    <title>Sobre el autor · The AI Agents Book</title>
+
+    <meta name="description" content="<p>Yorgo Petsas — eCommerce, desarrollo web e IA: trayectoria y cómo encaja este libro.</p>" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FZ2XTFXJB"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7FZ2XTFXJB');
+      </script>
+
+    <script>
+      tailwind = window.tailwind || {};
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+            },
+            backgroundImage: {
+              "grid-faint":
+                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      document.documentElement.classList.add("dark");
+    </script>
+    <script>
+      window.__LEAD_API_URL = "https://aiagents-leads-api.yorgopecas.workers.dev/lead";
+    </script>
+  </head>
+
+  <body class="relative min-h-screen bg-[#06060a] font-sans text-slate-200 antialiased">
+    <!-- Ambient mesh + grid (always on — site is dark-only) -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-32 left-[10%] h-[28rem] w-[28rem] rounded-full bg-indigo-600/25 blur-[120px]"></div>
+      <div class="absolute top-1/4 right-[-5%] h-[22rem] w-[22rem] rounded-full bg-violet-600/20 blur-[100px]"></div>
+      <div class="absolute bottom-[-5%] left-1/3 h-[20rem] w-[20rem] rounded-full bg-cyan-500/15 blur-[90px]"></div>
+      <div class="absolute inset-0 bg-grid-faint bg-[length:72px_72px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_20%,black,transparent)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#06060a]/40 to-[#06060a]"></div>
+    </div>
+
+    <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-white" href="#content">
+Ir al contenido    </a>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#06060a]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 md:px-6">
+        <a href="/es/" class="group flex items-center gap-3" aria-label="The AI Agents Book home">
+          <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-400 p-[1px] shadow-lg shadow-indigo-500/25 transition group-hover:shadow-indigo-500/40">
+            <div class="flex h-full w-full items-center justify-center rounded-[0.9rem] bg-[#0a0a10]">
+              <!-- Logo mark: agent loop + connected nodes (replace with your SVG when ready) -->
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="12" cy="12" r="2.5" fill="#22d3ee" />
+                <circle cx="6" cy="8" r="1.8" fill="#818cf8" />
+                <circle cx="18" cy="8" r="1.8" fill="#a78bfa" />
+                <circle cx="6" cy="16" r="1.8" fill="#a78bfa" />
+                <circle cx="18" cy="16" r="1.8" fill="#818cf8" />
+                <path d="M7.5 8.8L10.5 11M16.5 8.8L13.5 11M7.5 15.2L10.5 13M16.5 15.2L13.5 13M12 14.5v-3" stroke="#a5b4fc" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-400">AI Agents</div>
+            <div class="font-display text-sm font-semibold leading-tight text-white">The AI Agents Book</div>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://howaiagentswork.com/es/"
+            rel="nofollow noopener noreferrer"
+            class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/40 hover:text-white sm:inline-flex"
+          >
+Cómo funcionan los agentes de IA →          </a>
+          <nav class="flex flex-wrap items-center justify-end gap-1 rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium sm:flex-nowrap">
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/chapters/">Capítulos</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/exercise/">Ejercicio</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/about-the-author/">Sobre el autor</a>
+            <span class="inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-[#0a0a10]/80 p-0.5">
+              <a class="rounded-full px-2.5 py-1 transition text-slate-400 hover:bg-white/10 hover:text-white" href="/en/about-the-author/" >EN</a>
+              <a class="rounded-full px-2.5 py-1 transition bg-white/15 font-semibold text-white" href="/es/about-the-author/" aria-current="true">ES</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="mx-auto max-w-6xl px-4 py-12 pb-28 md:px-6 md:py-20 md:pb-20">
+    <div class="not-prose mx-auto mb-10 max-w-4xl md:mb-12">
+      <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8">
+        <div class="relative shrink-0">
+          <div class="absolute -inset-0.5 rounded-full bg-gradient-to-br from-indigo-500/40 to-violet-500/30 blur-sm" aria-hidden="true"></div>
+          <img
+            src="/images/yorgo_petsas_aiagentsbook.jpg"
+            alt="Yorgo Petsas"
+            class="relative h-36 w-36 rounded-full object-cover shadow-xl ring-2 ring-white/10 sm:h-44 sm:w-44"
+            width="176"
+            height="176"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+        <div class="text-center sm:text-left">
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">Sobre el autor</p>
+          <p class="font-display mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Yorgo Petsas</p>
+          <p class="mt-2 text-sm text-slate-400">Responsable de Innovación Digital eCommerce · Barcelona</p>
+        </div>
+      </div>
+    </div>
+  <div
+    class="book-prose prose prose-invert prose-slate mx-auto max-w-4xl text-slate-300
+      prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight
+      prose-h2:scroll-mt-28 prose-h2:mt-14 prose-h2:mb-8 prose-h2:border-b prose-h2:border-indigo-500/45 prose-h2:pb-4 prose-h2:text-xl prose-h2:leading-snug prose-h2:text-white md:prose-h2:mt-16 md:prose-h2:text-[1.4rem]
+      prose-h2:first:mt-0
+      prose-h3:scroll-mt-28 prose-h3:mt-12 prose-h3:mb-5 prose-h3:rounded-xl prose-h3:border prose-h3:border-white/12 prose-h3:border-l-[4px] prose-h3:border-l-indigo-500 prose-h3:bg-gradient-to-br prose-h3:from-white/[0.07] prose-h3:to-indigo-950/30 prose-h3:px-5 prose-h3:py-4 prose-h3:shadow-lg prose-h3:shadow-black/25 prose-h3:ring-1 prose-h3:ring-inset prose-h3:ring-white/[0.06] prose-h3:text-base prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-50 md:prose-h3:text-lg
+      prose-p:mb-4 prose-p:leading-relaxed
+      prose-strong:text-white
+      prose-hr:my-12 prose-hr:border-white/20
+      prose-a:text-indigo-400 hover:prose-a:underline"
+  >
+    <div class="content-section content-section-lead"><p>Profesional plurilingüe de TI y eCommerce con base en <strong>Barcelona, Cataluña, España</strong>. Responsable de Innovación Digital eCommerce en <strong>EDEL (Electrónica de Elevadores, S.L.)</strong>, con una trayectoria amplia en retail online, entrega técnica y liderazgo interfuncional.</p>
+<p><a href="https://www.linkedin.com/in/yorgopetsas/" rel="noopener noreferrer" target="_blank">Perfil en LinkedIn</a> · <a href="https://github.com/yorgopetsas" rel="noopener noreferrer" target="_blank">GitHub</a></p>
+</div><div class="content-section content-section-block"><h2>Trayectoria</h2>
+<p>Aproximadamente <strong>más de 15 años</strong> en dirección eCommerce (B2B y B2C) y desarrollo web, con cada vez más profundidad en <strong>programación, análisis de datos, IA y tecnologías cloud</strong>. Cómodo uniendo producto, marketing e ingeniería: desde operaciones y SEO hasta stacks a medida, integraciones y entrega con herramientas modernas.</p>
+<p><strong>Práctica técnica (visión general):</strong> Python, R, C, SQL, JavaScript, React, Git; experiencia en cloud con Google, Azure y Oracle; datos y analítica (p. ej. Tableau, notebooks, ecosistemas habituales de ML); Agile / Scrum.</p>
+<p><strong>Oficio digital más amplio:</strong> Analítica, SEO técnico, marketing de pago y de ciclo de vida, y trabajo práctico en las principales plataformas de comercio (Magento / Adobe Commerce, WordPress, Shopify, BigCommerce y otras).</p>
+<p><strong>Formación:</strong> Grado en Administración de Empresas (New Bulgarian University). Formación intensiva en programación en <strong><a href="https://www.42network.org/">42</a></strong> (proyectos y aprendizaje entre pares).</p>
+</div><div class="content-section content-section-block"><h2>Experiencia destacada</h2>
+<ul>
+<li>
+<p><strong>Head of eCommerce Digital Innovation — EDEL (Electrónica de Elevadores, S.L.)</strong> (desde feb. 2024): operaciones eCommerce, marketing online y SEO, sitios y APIs en Django, iniciativas ERP, software interno y gestión de proveedores (p. ej. integraciones logísticas y de marketing), entrega con Git y Scrum.</p>
+</li>
+<li>
+<p><strong>Head of eCommerce — Standard Hidráulica</strong> (2021–2022): estrategia multi-marketplace, propiedad del PIM (SalesLayer), integraciones y calidad de la información; reconocimiento por calidad de la información digital y RA en el sitio corporativo.</p>
+</li>
+<li>
+<p><strong>Product Manager / eCommerce Manager — FORTrate S.L.</strong> (2017–2021): Magento multisitio B2B/B2C, Amazon y canales adicionales, múltiples marcas y tiendas.</p>
+</li>
+<li>
+<p><strong>Roles anteriores</strong> incluyen dirección de eCommerce por país (Alensa y mercados relacionados), distribución internacional y trabajo de marca (Loaded Boards Bulgaria / Abolini), consultoría SEO y proyectos web — desde apoyo práctico hasta resultados eCommerce con responsabilidad de negocio.</p>
+</li>
+</ul>
+</div><div class="content-section content-section-block"><h2>Por qué este libro</h2>
+<p>Este proyecto combina <strong>años construyendo sistemas reales</strong> con un estudio centrado en cómo se diseñan los <strong>agentes de IA</strong>: bucles, herramientas, memoria, planificación y aspectos de producción. El objetivo es práctico: ayudar a entender cómo funcionan los agentes y cómo construir con responsabilidad en sus propias máquinas — no teoría por el gusto de la teoría.</p>
+</div><div class="content-section content-section-block"><h2>Contacto</h2>
+<p>Dudas o colaboración: contacto vía <a href="https://www.linkedin.com/in/yorgopetsas/" rel="noopener noreferrer" target="_blank">LinkedIn</a>.</p></div>
+  </div>
+    </main>
+
+    <!-- Mobile sticky CTA (hidden on lg+) -->
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#06060a]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
+      role="region"
+      aria-label="Enlace al índice de capítulos"
+    >
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+        <div class="min-w-0">
+          <p class="truncate text-xs font-medium text-white">Capítulos en este sitio</p>
+          <p class="truncate text-[11px] text-slate-500">theaiagentsbook.com/es/chapters/</p>
+        </div>
+        <a
+          href="/es/chapters/"
+          class="inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25"
+        >
+Índice →        </a>
+      </div>
+    </div>
+
+    <footer class="mx-auto max-w-6xl px-4 pb-12 md:px-6 lg:pb-12">
+      <div class="flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <a href="/es/" class="font-display text-sm font-semibold text-white hover:text-indigo-300">The AI Agents Book</a>
+          <p class="mt-1 text-xs text-slate-500">Teoría, hoja de construcción y agentes de IA prácticos: en tu máquina o en la nube.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+          <a class="hover:text-indigo-400" href="/es/chapters/">Capítulos</a>
+          <a class="hover:text-indigo-400" href="/es/exercise/">Ejercicio</a>
+          <a class="hover:text-indigo-400" href="/es/about-the-author/">Sobre el autor</a>
+          <a class="hover:text-indigo-400" href="/en/about-the-author/">English</a>
+          <a class="hover:text-indigo-400" href="/es/about-the-author/">Español</a>
+          <a class="hover:text-indigo-400" href="https://howaiagentswork.com/es/" rel="nofollow noopener noreferrer">Cómo funcionan los agentes de IA</a>
+        </div>
+        <div class="text-xs text-slate-500">© 2026</div>
+      </div>
+    </footer>
+
+    <style>
+      /* Step blocks (###): tuck first paragraph under the heading card */
+      .book-prose h3 + p {
+        margin-top: 0.625rem;
+      }
+
+      /* Major h2 regions: separate “chapters” inside the article */
+      .book-prose .content-section {
+        margin-bottom: 2rem;
+      }
+      .book-prose .content-section:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-lead {
+        padding: 1.25rem 1.25rem 1.5rem;
+        border-radius: 1rem;
+        border: 1px dashed rgba(99, 102, 241, 0.35);
+        background: linear-gradient(
+          165deg,
+          rgba(99, 102, 241, 0.08) 0%,
+          rgba(6, 6, 10, 0.4) 100%
+        );
+      }
+      .book-prose .content-section-block {
+        padding: 1.5rem 1.35rem 1.75rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(6, 6, 10, 0.55) 100%
+        );
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(0, 0, 0, 0.45);
+      }
+      .book-prose .content-section-block > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* Build track: intro block before Step 0 */
+      .book-prose .content-section-build-intro {
+        padding: 1.5rem 1.35rem 1.75rem;
+        margin-bottom: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(99, 102, 241, 0.28);
+        background: linear-gradient(
+          145deg,
+          rgba(99, 102, 241, 0.1) 0%,
+          rgba(6, 6, 10, 0.5) 100%
+        );
+      }
+      .book-prose .content-section-build-intro > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* One panel per step (jump targets from nav) */
+      .book-prose .content-section-step {
+        padding: 1.35rem 1.25rem 1.6rem;
+        margin-bottom: 1.35rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(8, 8, 14, 0.65);
+        box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.12) inset;
+      }
+      .book-prose .content-section-step:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-step > h3:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        border-left-width: 3px;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+        box-shadow: none;
+        background: linear-gradient(
+          90deg,
+          rgba(99, 102, 241, 0.12) 0%,
+          rgba(255, 255, 255, 0.03) 100%
+        );
+      }
+      .book-prose .content-section-step hr {
+        margin-top: 1.25rem;
+        margin-bottom: 0;
+        opacity: 0.5;
+      }
+    </style>
+    <script>
+      (function () {
+        function stampLeadForms() {
+          const now = Date.now().toString();
+          document.querySelectorAll("form[data-lead-form] input[name='form_started_at']").forEach((el) => {
+            if (!el.value) el.value = now;
+          });
+        }
+
+        function isLikelySpam(form) {
+          const honeypot = form.querySelector("input[name='website']");
+          if (honeypot && honeypot.value && honeypot.value.trim()) return true;
+          const startedAt = Number((form.querySelector("input[name='form_started_at']") || {}).value || 0);
+          if (startedAt > 0 && Date.now() - startedAt < 2500) return true;
+          return false;
+        }
+
+        async function submitLead(form) {
+          const endpoint = (window.__LEAD_API_URL || "").trim();
+          const actionUrl = form.getAttribute("action") || "";
+          const payload = Object.fromEntries(new FormData(form).entries());
+          payload.audience = form.dataset.audience || payload.audience || "unknown";
+          payload.landing = window.location.pathname;
+          payload.timestamp = new Date().toISOString();
+
+          // Extract UTM from action URL so analytics context stays consistent.
+          try {
+            const u = new URL(actionUrl, window.location.origin);
+            ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach((k) => {
+              const v = u.searchParams.get(k);
+              if (v) payload[k] = v;
+            });
+          } catch (_) {}
+
+          if (!endpoint) return false;
+          try {
+            const res = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            return res.ok;
+          } catch (_) {
+            return false;
+          }
+        }
+
+        document.addEventListener("submit", async function (e) {
+          const form = e.target;
+          if (!(form instanceof HTMLFormElement) || !form.matches("form[data-lead-form]")) return;
+          e.preventDefault();
+          if (isLikelySpam(form)) return;
+          const actionUrl = form.getAttribute("action") || "/";
+          const target = form.getAttribute("target") || "_blank";
+          const button = form.querySelector('button[type="submit"]');
+          if (button) {
+            button.setAttribute("disabled", "disabled");
+            button.classList.add("opacity-70", "cursor-not-allowed");
+          }
+          await submitLead(form);
+          window.open(actionUrl, target);
+          if (button) {
+            button.removeAttribute("disabled");
+            button.classList.remove("opacity-70", "cursor-not-allowed");
+          }
+        });
+        stampLeadForms();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Multi-agent</title><link href="/" rel="alternate"/><link href="feeds/multi-agent.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Capítulo 9 — Sistemas multiagente</title><link href="es/chapter-09-multi-agent-systems/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:es/chapter-09-multi-agent-systems/</id><content type="html">&lt;h2&gt;Varios agentes, una misión&lt;/h2&gt;
+&lt;p&gt;Este capítulo introduce patrones de orquestación y reparto de roles.&lt;/p&gt;
+&lt;h2&gt;Qué verás&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cuándo tiene sentido multiagente frente a un solo bucle&lt;/li&gt;
+&lt;li&gt;Contratos y trazabilidad entre agentes&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Multi-agent"/><category term="[Multi-agent"/><category term="Orchestration]"/></entry><entry><title>Chapter 9 — Multi-Agent Systems</title><link href="en/chapter-9-multi-agent-systems/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:en/chapter-9-multi-agent-systems/</id><content type="html">&lt;h2&gt;Collaboration patterns&lt;/h2&gt;
+&lt;p&gt;Multi-agent systems can outperform single agents when you have clear roles, interfaces, and evaluation methods.&lt;/p&gt;
+&lt;p&gt;This chapter will map the main patterns and show how to reason about the trade-offs.&lt;/p&gt;</content><category term="Multi-Agent"/><category term="[Multi-Agent"/><category term="Collaboration"/><category term="Specialization]"/></entry></feed>

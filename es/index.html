@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..600&family=Plus+Jakarta+Sans:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet" />
+
+    <title>El libro de los agentes de IA · The AI Agents Book</title>
+
+    <meta name="description" content="<p>Entiende cómo funcionan los agentes de IA, construye el tuyo en local (código abierto, privado) y extrae conclusiones prácticas de filtraciones recientes de modelos.</p>" />
+
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-7FZ2XTFXJB"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-7FZ2XTFXJB');
+      </script>
+
+    <script>
+      tailwind = window.tailwind || {};
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+              display: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
+            },
+            backgroundImage: {
+              "grid-faint":
+                "linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px)",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      document.documentElement.classList.add("dark");
+    </script>
+    <script>
+      window.__LEAD_API_URL = "https://aiagents-leads-api.yorgopecas.workers.dev/lead";
+    </script>
+  </head>
+
+  <body class="relative min-h-screen bg-[#06060a] font-sans text-slate-200 antialiased">
+    <!-- Ambient mesh + grid (always on — site is dark-only) -->
+    <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
+      <div class="absolute -top-32 left-[10%] h-[28rem] w-[28rem] rounded-full bg-indigo-600/25 blur-[120px]"></div>
+      <div class="absolute top-1/4 right-[-5%] h-[22rem] w-[22rem] rounded-full bg-violet-600/20 blur-[100px]"></div>
+      <div class="absolute bottom-[-5%] left-1/3 h-[20rem] w-[20rem] rounded-full bg-cyan-500/15 blur-[90px]"></div>
+      <div class="absolute inset-0 bg-grid-faint bg-[length:72px_72px] [mask-image:radial-gradient(ellipse_80%_60%_at_50%_20%,black,transparent)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#06060a]/40 to-[#06060a]"></div>
+    </div>
+
+    <a class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-indigo-600 focus:px-4 focus:py-2 focus:text-white" href="#content">
+Ir al contenido    </a>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-[#06060a]/80 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3.5 md:px-6">
+        <a href="/es/" class="group flex items-center gap-3" aria-label="The AI Agents Book home">
+          <div class="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 via-violet-500 to-cyan-400 p-[1px] shadow-lg shadow-indigo-500/25 transition group-hover:shadow-indigo-500/40">
+            <div class="flex h-full w-full items-center justify-center rounded-[0.9rem] bg-[#0a0a10]">
+              <!-- Logo mark: agent loop + connected nodes (replace with your SVG when ready) -->
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="12" cy="12" r="2.5" fill="#22d3ee" />
+                <circle cx="6" cy="8" r="1.8" fill="#818cf8" />
+                <circle cx="18" cy="8" r="1.8" fill="#a78bfa" />
+                <circle cx="6" cy="16" r="1.8" fill="#a78bfa" />
+                <circle cx="18" cy="16" r="1.8" fill="#818cf8" />
+                <path d="M7.5 8.8L10.5 11M16.5 8.8L13.5 11M7.5 15.2L10.5 13M16.5 15.2L13.5 13M12 14.5v-3" stroke="#a5b4fc" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="text-[11px] font-semibold uppercase tracking-[0.18em] text-indigo-400">AI Agents</div>
+            <div class="font-display text-sm font-semibold leading-tight text-white">The AI Agents Book</div>
+          </div>
+        </a>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://howaiagentswork.com/es/"
+            rel="nofollow noopener noreferrer"
+            class="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-medium text-slate-200 shadow-sm transition hover:border-indigo-400/40 hover:text-white sm:inline-flex"
+          >
+Cómo funcionan los agentes de IA →          </a>
+          <nav class="flex flex-wrap items-center justify-end gap-1 rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium sm:flex-nowrap">
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/chapters/">Capítulos</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/exercise/">Ejercicio</a>
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/about-the-author/">Sobre el autor</a>
+            <span class="inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-[#0a0a10]/80 p-0.5">
+              <a class="rounded-full px-2.5 py-1 transition text-slate-400 hover:bg-white/10 hover:text-white" href="/en/" >EN</a>
+              <a class="rounded-full px-2.5 py-1 transition bg-white/15 font-semibold text-white" href="/es/" aria-current="true">ES</a>
+            </span>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="mx-auto max-w-6xl px-4 py-12 pb-28 md:px-6 md:py-20 md:pb-20">
+  <div class="mx-auto max-w-6xl">
+      <!-- Hero: copy + illustration -->
+      <header class="not-prose relative mb-12 md:mb-16">
+        <div class="pointer-events-none absolute -top-8 left-1/2 h-40 w-[120%] -translate-x-1/2 bg-gradient-to-b from-indigo-500/20 to-transparent blur-2xl" aria-hidden="true"></div>
+
+        <div class="relative grid items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+          <div class="text-center md:text-left">
+            <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-300">
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
+Libro + hoja de construcción práctica            </p>
+
+            <h1 class="font-display mt-6 bg-gradient-to-br from-white via-slate-100 to-indigo-200 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent sm:text-5xl lg:text-[3.25rem]">
+              El libro de los agentes de IA
+            </h1>
+
+              <div class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-400 md:mx-0 [&_p]:m-0">
+                <p>Entiende cómo funcionan los agentes de IA, construye el tuyo en local (código abierto, privado) y extrae conclusiones prácticas de filtraciones recientes de modelos.</p>
+              </div>
+
+            <div class="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 md:justify-start">
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Entender agentes</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Construir en Python</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Local · Ollama · o APIs</span>
+            </div>
+
+            <div class="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-center md:justify-start">
+              <a
+                href="/es/chapters/"
+                class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
+              >
+Índice de capítulos (0–10)                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </a>
+              <a
+                href="https://howaiagentswork.com/es/"
+                rel="nofollow noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:text-white"
+              >
+Cómo funcionan los agentes de IA                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+              </a>
+              <a
+                href="/es/exercise/"
+                class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:text-white"
+              >
+Pista de ejercicios              </a>
+              <a
+                href="#overview-video"
+                class="inline-flex items-center justify-center rounded-xl border border-dashed border-white/20 px-6 py-3 text-sm font-semibold text-slate-400"
+              >
+Ver resumen en vídeo              </a>
+            </div>
+          </div>
+
+          <!-- Hero image: book cover (~20% smaller than prior max width) -->
+          <div class="relative mx-auto w-full max-w-[min(100%,22.4rem)] md:max-w-[min(100%,22.4rem)]">
+            <div class="absolute -inset-4 rounded-3xl bg-gradient-to-br from-indigo-500/25 via-transparent to-violet-600/15 blur-2xl" aria-hidden="true"></div>
+            <img
+              src="/images/The_AI_Agents_Bbook_Cover.png"
+              alt="Portada de The AI Agents Book"
+              class="relative mx-auto h-auto w-full rounded-2xl border border-white/10 bg-[#0a0a12] object-contain shadow-2xl ring-1 ring-white/10"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </header>
+
+        <section class="not-prose mb-10 md:mb-12" id="home-about-author" aria-labelledby="home-about-author-heading">
+          <a
+            href="/es/about-the-author/"
+            class="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-5 shadow-lg shadow-black/20 transition hover:border-indigo-500/35 hover:bg-white/[0.08] sm:flex-row sm:items-center sm:gap-6 sm:p-6"
+          >
+            <div class="relative mx-auto shrink-0 sm:mx-0">
+              <div class="absolute -inset-0.5 rounded-full bg-gradient-to-br from-indigo-500/35 to-cyan-500/20 opacity-80 blur-sm transition group-hover:opacity-100" aria-hidden="true"></div>
+              <img
+                src="/images/yorgo_petsas_aiagentsbook.jpg"
+                alt=""
+                class="relative h-20 w-20 rounded-full object-cover ring-2 ring-white/10 sm:h-[5.5rem] sm:w-[5.5rem]"
+                width="88"
+                height="88"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="min-w-0 flex-1 text-center sm:text-left">
+              <p id="home-about-author-heading" class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">Sobre el autor</p>
+              <p class="font-display mt-2 text-lg font-semibold text-white">Yorgo Petsas</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-400">eCommerce, sistemas reales y agentes de IA prácticos: por qué existe este libro.</p>
+              <p class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-indigo-400 group-hover:text-indigo-300">
+Leer biografía completa                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </p>
+            </div>
+          </a>
+        </section>
+
+      <!-- Social proof (placeholder — swap for real logos / quote) -->
+      <section class="not-prose mb-12 md:mb-14" aria-labelledby="social-proof-heading">
+        <h2 id="social-proof-heading" class="sr-only">Prueba social</h2>
+        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">Lectores y builders</p>
+        <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Python · cualquier nivel</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Código abierto</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Tu máquina / VM</span>
+          <span class="rounded-lg border border-dashed border-white/20 px-4 py-2 text-xs font-medium text-slate-500">Tu logo aquí</span>
+        </div>
+        <figure class="mx-auto mt-8 max-w-2xl text-center">
+          <blockquote class="font-display text-base font-medium leading-relaxed text-slate-300">
+«Testimonio de ejemplo: sustitúyelo por una cita real cuando la tengas.»          </blockquote>
+          <figcaption class="mt-3 text-xs text-slate-500">— Lector anticipado (nombre pendiente)</figcaption>
+        </figure>
+      </section>
+
+      <!-- Video placeholder (embed URL when ready) -->
+      <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">Resumen de 2 minutos</h2>
+            <p class="mt-1 text-sm text-slate-400">Una breve introducción al libro y a la hoja de construcción. La grabación llegará pronto.</p>
+          </div>
+          <p class="text-xs text-slate-500">YouTube · Vimeo · o MP4 propio</p>
+        </div>
+        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a12] shadow-2xl ring-1 ring-white/5">
+          <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-950/90 to-violet-950/80"></div>
+          <div class="absolute inset-0 flex flex-col items-center justify-center gap-5 p-6 text-center sm:gap-6 sm:p-8">
+            <!-- Stack / toolchain icons (decorative) -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-hidden="true">
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-cyan-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                  <path d="M7 7v10M17 7v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
+                </svg>
+                Stack
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M8 9l-3 3 3 3M16 15l3-3-3-3M14 6l-4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                Python
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-violet-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M4 12h2M18 12h2M12 4v2M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
+                </svg>
+LLM local              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
+                <svg class="h-4 w-4 shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none" />
+                </svg>
+                APIs
+              </span>
+              <span class="inline-flex items-center gap-1.5 rounded-lg border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-1.5 text-[11px] font-medium text-indigo-200">
+                <svg class="h-4 w-4 shrink-0 text-indigo-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+Vídeo              </span>
+            </div>
+            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-indigo-400/60 backdrop-blur-sm">
+              <svg class="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            </div>
+            <div>
+              <p class="font-display text-base font-semibold text-white">Marcador de vídeo</p>
+              <p class="mt-1 max-w-md text-sm text-slate-400">Pega tu embed o iframe en la plantilla cuando la grabación esté lista.</p>
+            </div>
+            <button
+              type="button"
+              class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-slate-200 backdrop-blur transition hover:bg-white/15"
+              disabled
+              aria-disabled="true"
+            >
+Reproducir (pronto)            </button>
+          </div>
+          <!-- Hook: replace overlay block with iframe, e.g.:
+          <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/VIDEO_ID" title="Overview" allowfullscreen loading="lazy"></iframe>
+          -->
+        </div>
+      </section>
+
+      <!-- Companion site: howaiagentswork.com (nofollow outbound) -->
+      <section class="not-prose mb-12 md:mb-16" id="companion-site" aria-labelledby="companion-heading">
+        <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/[0.12] via-[#0c0c14] to-violet-500/[0.08] p-6 shadow-xl shadow-black/20 md:p-8">
+          <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+            <div>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">Recursos gratuitos</p>
+              <h2 id="companion-heading" class="font-display mt-2 text-xl font-bold text-white md:text-2xl">Blog «Cómo funcionan los agentes de IA»</h2>
+              <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
+En este sitio encontrarás noticias, tutoriales y recursos sobre agentes de IA.              </p>
+            </div>
+          </div>
+          <div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <a
+              href="https://howaiagentswork.com/en/"
+              rel="nofollow noopener noreferrer"
+              class="group flex flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/45 hover:bg-white/[0.06]"
+            >
+              <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">English</span>
+              <span class="mt-2 font-medium text-white">Fragmentos y capítulos en profundidad</span>
+              <span class="mt-1 text-xs text-slate-500">howaiagentswork.com/en/</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Abrir sitio →</span>
+            </a>
+            <a
+              href="https://howaiagentswork.com/es/"
+              rel="nofollow noopener noreferrer"
+              class="group flex flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/45 hover:bg-white/[0.06]"
+            >
+              <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Español</span>
+              <span class="mt-2 font-medium text-white">Entrada en castellano</span>
+              <span class="mt-1 text-xs text-slate-500">howaiagentswork.com/es/</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Abrir sitio →</span>
+            </a>
+            <a
+              href="/es/exercise/"
+              class="group flex flex-col rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 transition hover:border-indigo-400/35 hover:bg-white/[0.05]"
+            >
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Proyecto real</span>
+              <span class="mt-2 font-medium text-slate-200">Crea tu propio agente de IA: hoja de ruta y pasos de construcción</span>
+              <span class="mt-1 text-xs text-slate-500">Abre la pista de ejercicios (pasos 0–10)</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Construir ahora →</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- News (placeholders — replace with real items later) -->
+      <section class="not-prose mb-12 md:mb-16" id="news" aria-labelledby="news-heading">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">Novedades</p>
+            <h2 id="news-heading" class="font-display text-xl font-bold text-white">Noticias</h2>
+            <p class="mt-1 text-sm text-slate-400">Lanzamientos, erratas y notas breves. Sustituye los marcadores cuando tengas anuncios reales.</p>
+          </div>
+        </div>
+        <ul class="mt-6 space-y-3">
+          <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
+            <time class="text-xs font-medium text-slate-500" datetime="2026-04-08">2026-04-08</time>
+            <p class="mt-2 font-medium text-slate-200">Gran filtración de IA: conclusiones clave (filtración tipo Claude)</p>
+            <p class="mt-1 text-sm text-slate-500">Marcador — describe aquí tu hito editorial o cambio.</p>
+          </li>
+          <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
+            <time class="text-xs font-medium text-slate-500" datetime="2026-04-01">2026-04-01</time>
+            <p class="mt-2 font-medium text-slate-200">Estructura del sitio: enlaces al blog, mapa de construcción, bloque de noticias</p>
+            <p class="mt-1 text-sm text-slate-500">Marcador — describe aquí tu hito editorial o cambio.</p>
+          </li>
+          <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
+            <time class="text-xs font-medium text-slate-500" datetime="">Por definir</time>
+            <p class="mt-2 font-medium text-slate-200">Siguiente: primera publicación del repo de la hoja de construcción (marcador)</p>
+            <p class="mt-1 text-sm text-slate-500">Sustituye por fecha y resumen reales cuando el código sea público.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="not-prose mb-12 md:mb-16" id="free-versions" aria-labelledby="free-versions-heading">
+        <div>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">Nuevas páginas</p>
+          <h2 id="free-versions-heading" class="font-display text-xl font-bold text-white">Consigue la versión gratuita del libro</h2>
+        </div>
+        <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+          <a href="/es/get-the-free-version-ceo/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-indigo-400">Para CEOs</p>
+            <p class="mt-2 font-medium text-white">Agentes de IA para CEOs</p>
+          </a>
+          <a href="/es/get-the-free-version-agencies/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-cyan-400">Para agencias</p>
+            <p class="mt-2 font-medium text-white">Agentes de IA para agencias</p>
+          </a>
+          <a href="/es/get-the-free-version-smb/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-amber-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-amber-300">Para PYME</p>
+            <p class="mt-2 font-medium text-white">Agentes de IA para pymes</p>
+          </a>
+          <a href="/es/get-the-free-version-hybrid-light/" class="rounded-xl border border-slate-300/25 bg-white/90 p-4 transition hover:border-blue-400/60 hover:bg-white">
+            <p class="text-xs uppercase tracking-wider text-blue-600">Agentes de IA 101</p>
+            <p class="mt-2 font-medium text-slate-900">Agentes de IA para principiantes</p>
+          </a>
+        </div>
+      </section>
+
+    <!-- Glass content card -->
+    <div
+      id="book-content"
+      class="relative mx-auto max-w-4xl rounded-[1.75rem] border border-white/10 bg-[#0c0c14]/90 p-6 shadow-2xl shadow-indigo-950/40 ring-1 ring-white/5 md:p-10 lg:p-12"
+    >
+      <div class="pointer-events-none absolute -inset-px rounded-[1.75rem] bg-gradient-to-b from-white/[0.07] to-transparent opacity-50" aria-hidden="true"></div>
+
+      <article
+        class="book-prose relative prose prose-invert max-w-none prose-slate
+          prose-headings:font-display prose-headings:font-semibold prose-headings:tracking-tight
+          prose-h2:scroll-mt-28 prose-h2:mt-14 prose-h2:mb-8 prose-h2:border-b prose-h2:border-indigo-500/45 prose-h2:pb-4 prose-h2:text-xl prose-h2:leading-snug prose-h2:text-white md:prose-h2:mt-16 md:prose-h2:text-[1.4rem]
+          prose-h2:first:mt-0
+          prose-h3:scroll-mt-28 prose-h3:mt-12 prose-h3:mb-5 prose-h3:rounded-xl prose-h3:border prose-h3:border-white/12 prose-h3:border-l-[4px] prose-h3:border-l-indigo-500 prose-h3:bg-gradient-to-br prose-h3:from-white/[0.07] prose-h3:to-indigo-950/30 prose-h3:px-5 prose-h3:py-4 prose-h3:shadow-lg prose-h3:shadow-black/25 prose-h3:ring-1 prose-h3:ring-inset prose-h3:ring-white/[0.06] prose-h3:text-base prose-h3:font-semibold prose-h3:leading-snug prose-h3:text-slate-50 md:prose-h3:text-lg
+          prose-p:mb-4 prose-p:leading-relaxed prose-p:text-[1.05rem] prose-p:text-slate-300
+          prose-blockquote:my-8 prose-blockquote:border-l-4 prose-blockquote:border-indigo-500/70 prose-blockquote:bg-white/[0.04] prose-blockquote:py-4 prose-blockquote:pl-5 prose-blockquote:pr-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-slate-200 prose-blockquote:shadow-sm prose-blockquote:shadow-black/20
+          prose-strong:font-semibold prose-strong:text-white
+          prose-ul:my-5 prose-ul:space-y-2 prose-ul:pl-1 prose-li:marker:text-indigo-400
+          prose-li:leading-relaxed
+          prose-hr:my-12 prose-hr:border-t prose-hr:border-white/20
+          prose-a:font-medium prose-a:text-indigo-400 prose-a:no-underline hover:prose-a:underline
+          prose-table:block prose-table:overflow-x-auto prose-table:rounded-xl prose-table:border prose-table:border-white/10
+          prose-thead:bg-white/5
+          prose-th:text-left prose-th:px-4 prose-th:py-3 prose-th:text-sm prose-th:font-semibold
+          prose-td:px-4 prose-td:py-3 prose-td:text-sm prose-td:align-top
+          prose-tr:border-b prose-tr:border-white/10
+          prose-code:rounded-md prose-code:border prose-code:border-white/10 prose-code:bg-white/5 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:font-normal prose-code:text-indigo-200
+      ">
+        <div class="content-section content-section-lead"><blockquote>
+<p><strong>Qué es esto:</strong> un camino coherente desde <em>leer</em> cómo funcionan los agentes hasta <em>construir</em> uno propio — sin esconderse detrás de APIs caja negra. El sitio complementario <a rel="nofollow noopener noreferrer" href="https://howaiagentswork.com/es/">Cómo funcionan los agentes de IA</a> publica fragmentos más largos y notas al estilo de capítulos; <strong>esta página es el contrato</strong>: qué vas a entender, cómo encajan las fases de la hoja de construcción y dónde seguir leyendo.</p>
+</blockquote>
+<hr />
+</div><div class="content-section content-section-block"><h2 id="on-this-site">En este sitio frente al sitio complementario</h2>
+<table>
+<thead>
+<tr>
+<th>Aquí (este sitio del libro)</th>
+<th>En <a rel="nofollow noopener noreferrer" href="https://howaiagentswork.com/es/">howaiagentswork.com</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>El <strong>mapa</strong>: promesas, hoja de ruta y la <strong>hoja de construcción</strong> en orden</td>
+<td><strong>Profundidad</strong>: modelos, bucles, herramientas, memoria, planificación — redactado para valer por sí solo en búsqueda y releído</td>
+</tr>
+<tr>
+<td><strong>Pasos 0–10</strong> como una sola narrativa que implementarás</td>
+<td><strong>Fragmentos</strong> a los que puedes entrar desde Google sin leer todo lo demás primero</td>
+</tr>
+<tr>
+<td>Lo bastante breve para hojearlo de una sentada</td>
+<td>Nos permite ir largos donde el matiz importa</td>
+</tr>
+</tbody>
+</table>
+<p>Usa esta página para decidir <em>si</em> te comprometes; usa el sitio complementario cuando quieras <em>densidad explicativa</em> en un solo tema.</p>
+<hr />
+</div><div class="content-section content-section-block"><h2 id="three-reasons">Tres motivos para leer</h2>
+<h3>1) Entender cómo funcionan los agentes</h3>
+<p>Los agentes no son «un chatbot con más actitud». Son <strong>bucles</strong> que acoplan un modelo a <strong>estado</strong>, <strong>herramientas</strong> y, cuando hace falta, <strong>memoria</strong> y <strong>planificación</strong>. Este libro construye ese modelo mental en lenguaje técnico llano — <strong>sin asumir cursos previos de ML</strong> — para que puedas razonar sobre modos de fallo, costes y compromisos de diseño.</p>
+<hr />
+<h3>2) Construir tu propio agente en local</h3>
+<p>Seguirás un tutorial que produce un <strong>agente funcional en tu máquina o VM</strong> con piezas de código abierto. No hace falta una «API de agente» de pago para el núcleo del recorrido.</p>
+<p>Aprenderás a conectar:</p>
+<ul>
+<li>un <strong>modelo</strong> (local, privado o alojado — la misma forma de código)</li>
+<li>un <strong>bucle de agente</strong> (iteración y retroalimentación)</li>
+<li><strong>herramientas</strong> (acciones que tocan el mundo real)</li>
+<li><strong>memoria + recuperación</strong> (escalar más allá de una sola ventana de contexto)</li>
+</ul>
+<p>Las APIs alojadas (ChatGPT, Claude, …) son aceleradores opcionales; la postura por defecto es <strong>Python reproducible e inspeccionable</strong>.</p>
+<hr />
+<h3>3) Conclusiones tras las filtraciones recientes de modelos</h3>
+<p>Incluimos un <strong>«y qué»</strong> explícito: qué sugieren las filtraciones y los lanzamientos reales sobre <strong>fiabilidad</strong>, <strong>evaluación</strong> y <strong>diseño de sistemas</strong> — sin convertir el libro en cotilleo. El objetivo es <strong>criterio de ingeniería</strong>, no titulares.</p>
+<hr />
+</div><div class="content-section content-section-block"><h2 id="chapter-roadmap">Hoja de ruta de capítulos (borrador)</h2>
+<ul>
+<li>Capítulo 0 — Introducción</li>
+<li>Capítulo 1 — Fundamentos</li>
+<li>Capítulo 2 — Cómo funcionan los modelos</li>
+<li>Capítulo 3 — Arquitectura del sistema</li>
+<li>Capítulo 4 — Entorno y configuración</li>
+<li>Capítulo 5 — El bucle del agente</li>
+<li>Capítulo 6 — Sistemas de herramientas</li>
+<li>Capítulo 7 — Memoria y recuperación</li>
+<li>Capítulo 8 — Planificación y descomposición</li>
+<li>Capítulo 9 — Sistemas multiagente</li>
+<li>Capítulo 10 — Sistemas avanzados y producción</li>
+</ul>
+<p>Lectura complementaria para varios de estos temas (mismo proyecto, otra superficie):</p>
+<ul>
+<li><strong>Modelos y tokens</strong> — intuición de qué puede y no puede ver el modelo en un solo paso  </li>
+<li><strong>El bucle</strong> — por qué «de un tiro» frente a «multipaso» lo cambia todo  </li>
+<li><strong>Herramientas</strong> — análisis, seguridad y el límite entre lenguaje y ejecución  </li>
+<li><strong>Memoria y recuperación</strong> — selección, no solo almacenamiento  </li>
+<li><strong>Planificación</strong> — planes como hipótesis que deben sobrevivir al contacto con la realidad  </li>
+</ul>
+<p>Explora esos hilos en el sitio complementario cuando quieras detalle más allá de esta visión general.</p>
+<hr />
+</div><div class="content-section content-section-block"><h2 id="build-track-summary">Hoja de construcción (<code>build-your-own-agent</code>)</h2>
+<p>La <strong>pista de ejercicios</strong> práctica (pasos 0–10) tiene ahora su propia página para que el inicio siga siendo un contrato y una hoja de ruta ligeros.</p>
+<p><strong><a href="/es/exercise/">Abrir la pista de ejercicios →</a></strong> — enlaces rápidos y el texto completo.</p>
+<hr />
+</div><div class="content-section content-section-block"><h2 id="read-next">Dónde seguir leyendo</h2>
+<p>Empieza por los fragmentos complementarios cuando quieras profundidad al estilo capítulo:</p>
+<ul>
+<li><a rel="nofollow noopener noreferrer" href="https://howaiagentswork.com/en/">English — How AI agents work</a> — fragmentos y notas largas  </li>
+<li><a rel="nofollow noopener noreferrer" href="https://howaiagentswork.com/es/">Español</a> — mismo proyecto, entrada en castellano  </li>
+</ul>
+<p>La captura de correos y las donaciones pueden añadirse después; por ahora, el progreso se ve en el sitio complementario y en esta hoja de ruta.</p>
+<hr />
+<p><em>Pase editorial opcional: condensar cada paso en un solo bloque tipo blueprint (Objetivo / Resultado / Herramientas / Conocimiento / Listo para seguir) para el Capítulo 0 o el README del repositorio complementario.</em></p></div>
+      </article>
+    </div>
+  </div>
+    </main>
+
+    <!-- Mobile sticky CTA (hidden on lg+) -->
+    <div
+      class="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#06060a]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
+      role="region"
+      aria-label="Enlace al índice de capítulos"
+    >
+      <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+        <div class="min-w-0">
+          <p class="truncate text-xs font-medium text-white">Capítulos en este sitio</p>
+          <p class="truncate text-[11px] text-slate-500">theaiagentsbook.com/es/chapters/</p>
+        </div>
+        <a
+          href="/es/chapters/"
+          class="inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25"
+        >
+Índice →        </a>
+      </div>
+    </div>
+
+    <footer class="mx-auto max-w-6xl px-4 pb-12 md:px-6 lg:pb-12">
+      <div class="flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
+        <div>
+          <a href="/es/" class="font-display text-sm font-semibold text-white hover:text-indigo-300">The AI Agents Book</a>
+          <p class="mt-1 text-xs text-slate-500">Teoría, hoja de construcción y agentes de IA prácticos: en tu máquina o en la nube.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+          <a class="hover:text-indigo-400" href="/es/chapters/">Capítulos</a>
+          <a class="hover:text-indigo-400" href="/es/exercise/">Ejercicio</a>
+          <a class="hover:text-indigo-400" href="/es/about-the-author/">Sobre el autor</a>
+          <a class="hover:text-indigo-400" href="/en/">English</a>
+          <a class="hover:text-indigo-400" href="/es/">Español</a>
+          <a class="hover:text-indigo-400" href="https://howaiagentswork.com/es/" rel="nofollow noopener noreferrer">Cómo funcionan los agentes de IA</a>
+        </div>
+        <div class="text-xs text-slate-500">© 2026</div>
+      </div>
+    </footer>
+
+    <style>
+      /* Step blocks (###): tuck first paragraph under the heading card */
+      .book-prose h3 + p {
+        margin-top: 0.625rem;
+      }
+
+      /* Major h2 regions: separate “chapters” inside the article */
+      .book-prose .content-section {
+        margin-bottom: 2rem;
+      }
+      .book-prose .content-section:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-lead {
+        padding: 1.25rem 1.25rem 1.5rem;
+        border-radius: 1rem;
+        border: 1px dashed rgba(99, 102, 241, 0.35);
+        background: linear-gradient(
+          165deg,
+          rgba(99, 102, 241, 0.08) 0%,
+          rgba(6, 6, 10, 0.4) 100%
+        );
+      }
+      .book-prose .content-section-block {
+        padding: 1.5rem 1.35rem 1.75rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.05) 0%,
+          rgba(6, 6, 10, 0.55) 100%
+        );
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 12px 40px -12px rgba(0, 0, 0, 0.45);
+      }
+      .book-prose .content-section-block > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* Build track: intro block before Step 0 */
+      .book-prose .content-section-build-intro {
+        padding: 1.5rem 1.35rem 1.75rem;
+        margin-bottom: 1.5rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(99, 102, 241, 0.28);
+        background: linear-gradient(
+          145deg,
+          rgba(99, 102, 241, 0.1) 0%,
+          rgba(6, 6, 10, 0.5) 100%
+        );
+      }
+      .book-prose .content-section-build-intro > h2:first-child {
+        margin-top: 0 !important;
+      }
+      /* One panel per step (jump targets from nav) */
+      .book-prose .content-section-step {
+        padding: 1.35rem 1.25rem 1.6rem;
+        margin-bottom: 1.35rem;
+        border-radius: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(8, 8, 14, 0.65);
+        box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.12) inset;
+      }
+      .book-prose .content-section-step:last-child {
+        margin-bottom: 0;
+      }
+      .book-prose .content-section-step > h3:first-child {
+        margin-top: 0 !important;
+        margin-bottom: 1rem !important;
+        border-left-width: 3px;
+        padding-top: 0.65rem;
+        padding-bottom: 0.65rem;
+        box-shadow: none;
+        background: linear-gradient(
+          90deg,
+          rgba(99, 102, 241, 0.12) 0%,
+          rgba(255, 255, 255, 0.03) 100%
+        );
+      }
+      .book-prose .content-section-step hr {
+        margin-top: 1.25rem;
+        margin-bottom: 0;
+        opacity: 0.5;
+      }
+    </style>
+    <script>
+      (function () {
+        function stampLeadForms() {
+          const now = Date.now().toString();
+          document.querySelectorAll("form[data-lead-form] input[name='form_started_at']").forEach((el) => {
+            if (!el.value) el.value = now;
+          });
+        }
+
+        function isLikelySpam(form) {
+          const honeypot = form.querySelector("input[name='website']");
+          if (honeypot && honeypot.value && honeypot.value.trim()) return true;
+          const startedAt = Number((form.querySelector("input[name='form_started_at']") || {}).value || 0);
+          if (startedAt > 0 && Date.now() - startedAt < 2500) return true;
+          return false;
+        }
+
+        async function submitLead(form) {
+          const endpoint = (window.__LEAD_API_URL || "").trim();
+          const actionUrl = form.getAttribute("action") || "";
+          const payload = Object.fromEntries(new FormData(form).entries());
+          payload.audience = form.dataset.audience || payload.audience || "unknown";
+          payload.landing = window.location.pathname;
+          payload.timestamp = new Date().toISOString();
+
+          // Extract UTM from action URL so analytics context stays consistent.
+          try {
+            const u = new URL(actionUrl, window.location.origin);
+            ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach((k) => {
+              const v = u.searchParams.get(k);
+              if (v) payload[k] = v;
+            });
+          } catch (_) {}
+
+          if (!endpoint) return false;
+          try {
+            const res = await fetch(endpoint, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload),
+            });
+            return res.ok;
+          } catch (_) {
+            return false;
+          }
+        }
+
+        document.addEventListener("submit", async function (e) {
+          const form = e.target;
+          if (!(form instanceof HTMLFormElement) || !form.matches("form[data-lead-form]")) return;
+          e.preventDefault();
+          if (isLikelySpam(form)) return;
+          const actionUrl = form.getAttribute("action") || "/";
+          const target = form.getAttribute("target") || "_blank";
+          const button = form.querySelector('button[type="submit"]');
+          if (button) {
+            button.setAttribute("disabled", "disabled");
+            button.classList.add("opacity-70", "cursor-not-allowed");
+          }
+          await submitLead(form);
+          window.open(actionUrl, target);
+          if (button) {
+            button.removeAttribute("disabled");
+            button.classList.remove("opacity-70", "cursor-not-allowed");
+          }
+        });
+        stampLeadForms();
+      })();
+    </script>
+  </body>
+</html>

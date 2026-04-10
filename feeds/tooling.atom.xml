@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Tooling</title><link href="/" rel="alternate"/><link href="feeds/tooling.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Chapter 4 — Environment &amp; Setup</title><link href="en/chapter-4-environment-setup/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:en/chapter-4-environment-setup/</id><content type="html">&lt;h2&gt;Practical local setup&lt;/h2&gt;
+&lt;p&gt;You will set up the environment to run models locally (or on your private VM), configure dependencies, and keep everything reproducible.&lt;/p&gt;
+&lt;h2&gt;What you will be able to do&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Install the core Python stack&lt;/li&gt;
+&lt;li&gt;Run an agent loop locally end-to-end&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Tooling"/><category term="[Local Models"/><category term="Setup"/><category term="Dependencies]"/></entry><entry><title>Chapter 6 — Tool Systems</title><link href="en/chapter-6-tool-systems/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:en/chapter-6-tool-systems/</id><content type="html">&lt;h2&gt;Current state&lt;/h2&gt;
+&lt;p&gt;Tool-use is powerful, but it is also where agents can fail in subtle ways (inconsistent depth, wrong assumptions, brittle tool calls).&lt;/p&gt;
+&lt;p&gt;This chapter is partially written and will be rewritten for clarity and robustness.&lt;/p&gt;</content><category term="Tooling"/><category term="[Tools"/><category term="Actions"/><category term="Real World]"/></entry></feed>

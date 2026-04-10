@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Tools</title><link href="/" rel="alternate"/><link href="feeds/tools.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Capítulo 6 — Sistemas de herramientas</title><link href="es/chapter-06-tool-systems/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:es/chapter-06-tool-systems/</id><content type="html">&lt;h2&gt;Herramientas con seguridad&lt;/h2&gt;
+&lt;p&gt;Este capítulo conecta la salida del lenguaje con acciones en el mundo real: esquemas, permisos y validación.&lt;/p&gt;
+&lt;h2&gt;Enfoque&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Diseño de herramientas componibles&lt;/li&gt;
+&lt;li&gt;Límites y políticas de ejecución&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Tools"/><category term="[Tools"/><category term="Safety]"/></entry></feed>
