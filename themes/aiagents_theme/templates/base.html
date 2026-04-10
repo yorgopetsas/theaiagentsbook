@@ -96,7 +96,8 @@
           >
             {% if P_LANG == 'es' %}Cómo funcionan los agentes de IA →{% else %}How AI Agents Work →{% endif %}
           </a>
-          <nav class="flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium">
+          <nav class="flex flex-wrap items-center justify-end gap-1 rounded-full border border-white/10 bg-white/5 p-0.5 text-xs font-medium sm:flex-nowrap">
+            <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/chapters/">{% if P_LANG == 'es' %}Capítulos{% else %}Chapters{% endif %}</a>
             <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/{{ P_LANG }}/about-the-author/">{% if P_LANG == 'es' %}Sobre el autor{% else %}About The Author{% endif %}</a>
             <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/en/">EN</a>
             <a class="rounded-full px-3 py-1.5 text-slate-400 transition hover:bg-white/10 hover:text-white" href="/es/">ES</a>
@@ -113,19 +114,18 @@
     <div
       class="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-[#06060a]/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-xl lg:hidden"
       role="region"
-      aria-label="{% if P_LANG == 'es' %}Enlace a fragmentos del libro{% else %}Quick link to chapter fragments{% endif %}"
+      aria-label="{% if P_LANG == 'es' %}Enlace al índice de capítulos{% else %}Quick link to chapter index{% endif %}"
     >
       <div class="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
         <div class="min-w-0">
-          <p class="truncate text-xs font-medium text-white">{% if P_LANG == 'es' %}Fragmentos del libro{% else %}Chapter fragments{% endif %}</p>
-          <p class="truncate text-[11px] text-slate-500">howaiagentswork.com</p>
+          <p class="truncate text-xs font-medium text-white">{% if P_LANG == 'es' %}Capítulos en este sitio{% else %}Chapters on this site{% endif %}</p>
+          <p class="truncate text-[11px] text-slate-500">theaiagentsbook.com/{{ P_LANG }}/chapters/</p>
         </div>
         <a
-          href="https://howaiagentswork.com/{{ P_LANG }}/"
-          rel="nofollow noopener noreferrer"
+          href="/{{ P_LANG }}/chapters/"
           class="inline-flex shrink-0 items-center justify-center rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-500/25"
         >
-          {% if P_LANG == 'es' %}Leer →{% else %}Read →{% endif %}
+          {% if P_LANG == 'es' %}Índice →{% else %}Index →{% endif %}
         </a>
       </div>
     </div>
@@ -137,6 +137,7 @@
           <p class="mt-1 text-xs text-slate-500">{% if P_LANG == 'es' %}Teoría, hoja de construcción y agentes de IA prácticos: en tu máquina o en la nube.{% else %}Theory, build track, and practical AI agents—on your machine or in the Cloud.{% endif %}</p>
         </div>
         <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">
+          <a class="hover:text-indigo-400" href="/{{ P_LANG }}/chapters/">{% if P_LANG == 'es' %}Capítulos{% else %}Chapters{% endif %}</a>
           <a class="hover:text-indigo-400" href="/{{ P_LANG }}/about-the-author/">{% if P_LANG == 'es' %}Sobre el autor{% else %}About the author{% endif %}</a>
           <a class="hover:text-indigo-400" href="/en/">English</a>
           <a class="hover:text-indigo-400" href="/es/">Español</a>

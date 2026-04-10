@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% set L = page.lang | default('en') %}
+  {% set lang_articles = namespace(items=[]) %}
+  {% for a in articles %}
+    {% if a.lang == L %}
+      {% set _ = lang_articles.items.append(a) %}
+    {% else %}
+      {% for t in a.translations %}
+        {% if t.lang == L %}
+          {% set _ = lang_articles.items.append(t) %}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+
+  {% set chs = [] %}
+  {% for a in lang_articles.items %}
+    {% if a.slug and a.slug[:8] == 'chapter-' %}
+      {% set _ = chs.append(a) %}
+    {% endif %}
+  {% endfor %}
+
+  {% if L == 'es' %}
+    {% set chapter_slug_order = [
+      'chapter-00-introduction', 'chapter-01-foundations', 'chapter-02-how-models-work', 'chapter-03-system-architecture', 'chapter-04-environment-setup', 'chapter-05-agent-loop', 'chapter-06-tool-systems', 'chapter-07-memory-retrieval', 'chapter-08-planning-decomposition', 'chapter-09-multi-agent-systems', 'chapter-10-advanced-systems-production'
+    ] %}
+  {% else %}
+    {% set chapter_slug_order = [
+      'chapter-0-introduction', 'chapter-1-foundations', 'chapter-2-how-models-work', 'chapter-3-system-architecture', 'chapter-4-environment-setup', 'chapter-5-the-agent-loop', 'chapter-6-tool-systems', 'chapter-7-memory-retrieval', 'chapter-8-planning-decomposition', 'chapter-9-multi-agent-systems', 'chapter-10-advanced-systems-production'
+    ] %}
+  {% endif %}
+
+  <div class="not-prose mx-auto max-w-4xl">
+    <header class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-lg shadow-black/20 md:p-8">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Índice{% else %}Index{% endif %}</p>
+      <h1 class="font-display mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">{{ page.title }}</h1>
+      {% if page.summary %}
+        <p class="mt-3 max-w-3xl text-base text-slate-400">{{ page.summary|striptags }}</p>
+      {% endif %}
+      <p class="mt-4 max-w-3xl text-sm text-slate-500">
+        {% if L == 'es' %}
+        Fragmentos numerados (0–10) alineados con el libro. El relato lineal completo sigue en la <a class="font-medium text-indigo-400 underline decoration-indigo-500/40 underline-offset-2 hover:text-indigo-300" href="/{{ L }}/">página principal</a>. Para noticias y tutoriales breves: <a class="font-medium text-indigo-400 underline decoration-indigo-500/40 underline-offset-2 hover:text-indigo-300" href="https://howaiagentswork.com/{{ L }}/" rel="nofollow noopener noreferrer">howaiagentswork.com</a>.
+        {% else %}
+        Numbered fragments (0–10) aligned with the book. The full linear narrative remains on the <a class="font-medium text-indigo-400 underline decoration-indigo-500/40 underline-offset-2 hover:text-indigo-300" href="/{{ L }}/">home page</a>. For news and short tutorials, see <a class="font-medium text-indigo-400 underline decoration-indigo-500/40 underline-offset-2 hover:text-indigo-300" href="https://howaiagentswork.com/{{ L }}/" rel="nofollow noopener noreferrer">howaiagentswork.com</a>.
+        {% endif %}
+      </p>
+    </header>
+
+    <section class="mt-8 rounded-2xl border border-indigo-500/25 bg-gradient-to-br from-indigo-500/[0.08] to-transparent p-6 md:p-8" aria-labelledby="chapters-list-heading">
+      <h2 id="chapters-list-heading" class="font-display text-lg font-semibold text-white">
+        {% if L == 'es' %}Capítulos (0–10){% else %}Chapters (0–10){% endif %}
+      </h2>
+      <p class="mt-1 text-sm text-slate-500">
+        {% if L == 'es' %}{{ chs|length }} capítulos{% else %}{{ chs|length }} chapters{% endif %}
+      </p>
+      <ol class="mt-6 list-none space-y-3 p-0">
+        {% if chs|length == 0 %}
+          <li class="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-200">
+            {% if L == 'es' %}No hay artículos <code class="rounded bg-black/30 px-1">chapter-*</code>.{% else %}No <code class="rounded bg-black/30 px-1">chapter-*</code> articles found.{% endif %}
+          </li>
+        {% else %}
+          {% for slug in chapter_slug_order %}
+            {% for a in chs %}
+              {% if a.slug == slug %}
+          <li class="rounded-xl border border-white/10 bg-[#0a0a12]/80 p-4 shadow-inner shadow-black/20">
+            <div class="flex flex-wrap items-baseline justify-between gap-2">
+              <a href="/{{ L }}/{{ a.slug }}/" class="font-display text-base font-semibold text-indigo-300 hover:text-indigo-200 hover:underline">{{ a.title }}</a>
+              {% if a.metadata.get('chapter_status') %}
+                <span class="shrink-0 rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs font-medium text-slate-400">{{ a.metadata.get('chapter_status') }}</span>
+              {% endif %}
+            </div>
+            {% if a.summary %}
+              <p class="mt-2 text-sm text-slate-500">{{ a.summary|striptags }}</p>
+            {% endif %}
+          </li>
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+        {% endif %}
+      </ol>
+    </section>
+
+    {% if page.content and (page.content|striptags|trim|length) > 0 %}
+      <div
+        class="book-prose prose prose-invert prose-slate mx-auto mt-10 max-w-4xl text-slate-300
+          prose-headings:font-display prose-headings:font-semibold prose-headings:text-white
+          prose-a:text-indigo-400 hover:prose-a:underline"
+      >
+        {{ page.content | add_nofollow_howaiagentswork }}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

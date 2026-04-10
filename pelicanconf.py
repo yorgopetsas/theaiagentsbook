@@ -29,9 +29,14 @@ EXTRA_TEMPLATES_PATHS = ["themes/aiagents_theme/templates"]
 PAGE_URL = "{lang}/"
 PAGE_SAVE_AS = "{lang}/index.html"
 
-# No chapter posts in the book site yet (only pages + later articles).
 ARTICLE_URL = "{lang}/{slug}/"
 ARTICLE_SAVE_AS = "{lang}/{slug}/index.html"
+# Non-default language articles must use the same /{lang}/{slug}/ tree as English.
+ARTICLE_LANG_URL = "{lang}/{slug}/"
+ARTICLE_LANG_SAVE_AS = "{lang}/{slug}/index.html"
+# Non-default language articles must use the same path shape (Pelican default is flat slug-lang.html).
+ARTICLE_LANG_URL = "{lang}/{slug}/"
+ARTICLE_LANG_SAVE_AS = "{lang}/{slug}/index.html"
 
 PAGE_PATHS = ["pages"]
 ARTICLE_PATHS = ["posts"]
