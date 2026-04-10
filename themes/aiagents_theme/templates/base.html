@@ -52,7 +52,7 @@
   </head>
 
   <body class="relative min-h-screen bg-[#06060a] font-sans text-slate-200 antialiased">
-    {% set P_LANG = page.lang if page is defined and page and page.lang else 'en' %}
+    {% set P_LANG = page.lang if page is defined and page and page.lang else (article.lang if article is defined and article and article.lang else 'en') %}
     <!-- Ambient mesh + grid (always on — site is dark-only) -->
     <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden" aria-hidden="true">
       <div class="absolute -top-32 left-[10%] h-[28rem] w-[28rem] rounded-full bg-indigo-600/25 blur-[120px]"></div>
@@ -133,7 +133,7 @@
     <footer class="mx-auto max-w-6xl px-4 pb-12 md:px-6 lg:pb-12">
       <div class="flex flex-col gap-6 border-t border-white/10 pt-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <div class="font-display text-sm font-semibold text-white">{{ SITENAME }}</div>
+          <a href="/{{ P_LANG }}/" class="font-display text-sm font-semibold text-white hover:text-indigo-300">{{ SITENAME }}</a>
           <p class="mt-1 text-xs text-slate-500">{% if P_LANG == 'es' %}Teoría, hoja de construcción y agentes de IA prácticos: en tu máquina o en la nube.{% else %}Theory, build track, and practical AI agents—on your machine or in the Cloud.{% endif %}</p>
         </div>
         <div class="flex flex-wrap items-center gap-4 text-sm text-slate-400">

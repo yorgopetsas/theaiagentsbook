@@ -2,6 +2,8 @@
 lang: en
 slug: index
 template: home
+url: en/
+save_as: en/index.html
 title: The AI Agents Book
 summary: Understand how AI agents work, build your own local agent (open source, private), and extract practical conclusions from recent model leaks.
 ---

@@ -2,6 +2,8 @@
 lang: es
 slug: index
 template: home
+url: es/
+save_as: es/index.html
 title: El libro de los agentes de IA
 summary: Entiende cómo funcionan los agentes de IA, construye el tuyo en local (código abierto, privado) y extrae conclusiones prácticas de filtraciones recientes de modelos.
 ---
