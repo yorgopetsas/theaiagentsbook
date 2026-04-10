@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% set L = page.lang | default('en') %}
   {% if page.slug == 'about-the-author' and AUTHOR_PHOTO %}
     <div class="not-prose mx-auto mb-10 max-w-4xl md:mb-12">
       <div class="flex flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-8">
@@ -17,9 +18,9 @@
           />
         </div>
         <div class="text-center sm:text-left">
-          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">About the author</p>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Sobre el autor{% else %}About the author{% endif %}</p>
           <p class="font-display mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl">Yorgo Petsas</p>
-          <p class="mt-2 text-sm text-slate-400">Head of eCommerce Digital Innovation · Barcelona</p>
+          <p class="mt-2 text-sm text-slate-400">{% if L == 'es' %}Responsable de Innovación Digital eCommerce · Barcelona{% else %}Head of eCommerce Digital Innovation · Barcelona{% endif %}</p>
         </div>
       </div>
     </div>

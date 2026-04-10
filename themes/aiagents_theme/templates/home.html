@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% set L = page.lang | default('en') %}
   <div class="mx-auto max-w-6xl">
     {% if page.title %}
       <!-- Hero: copy + illustration -->
@@ -11,7 +12,7 @@
           <div class="text-center md:text-left">
             <p class="inline-flex items-center gap-2 rounded-full border border-indigo-400/25 bg-indigo-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-300">
               <span class="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]"></span>
-              Book + hands-on build track
+              {% if L == 'es' %}Libro + hoja de construcción práctica{% else %}Book + hands-on build track{% endif %}
             </p>
 
             <h1 class="font-display mt-6 bg-gradient-to-br from-white via-slate-100 to-indigo-200 bg-clip-text text-4xl font-extrabold leading-[1.1] tracking-tight text-transparent sm:text-5xl lg:text-[3.25rem]">
@@ -25,31 +26,31 @@
             {% endif %}
 
             <div class="mt-8 flex flex-wrap justify-center gap-2 sm:gap-3 md:justify-start">
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Understand agents</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Build in Python</span>
-              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">Local · Ollama · or APIs</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">{% if L == 'es' %}Entender agentes{% else %}Understand agents{% endif %}</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">{% if L == 'es' %}Construir en Python{% else %}Build in Python{% endif %}</span>
+              <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300 shadow-sm">{% if L == 'es' %}Local · Ollama · o APIs{% else %}Local · Ollama · or APIs{% endif %}</span>
             </div>
 
             <div class="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:justify-center md:justify-start">
               <a
-                href="https://howaiagentswork.com/en/"
+                href="https://howaiagentswork.com/{{ L }}/"
                 rel="nofollow noopener noreferrer"
                 class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
               >
-                How AI Agents Work
+                {% if L == 'es' %}Cómo funcionan los agentes de IA{% else %}How AI Agents Work{% endif %}
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
               </a>
               <a
                 href="#book-content"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:text-white"
               >
-                Scroll to overview
+                {% if L == 'es' %}Ir al resumen{% else %}Scroll to overview{% endif %}
               </a>
               <a
                 href="#overview-video"
                 class="inline-flex items-center justify-center rounded-xl border border-dashed border-white/20 px-6 py-3 text-sm font-semibold text-slate-400"
               >
-                Watch overview
+                {% if L == 'es' %}Ver resumen en vídeo{% else %}Watch overview{% endif %}
               </a>
             </div>
           </div>
@@ -59,7 +60,7 @@
             <div class="absolute -inset-4 rounded-3xl bg-gradient-to-br from-indigo-500/25 via-transparent to-violet-600/15 blur-2xl" aria-hidden="true"></div>
             <img
               src="/images/The_AI_Agents_Bbook_Cover.png"
-              alt="The AI Agents Book cover"
+              alt="{% if L == 'es' %}Portada de The AI Agents Book{% else %}The AI Agents Book cover{% endif %}"
               class="relative h-auto w-full rounded-2xl border border-white/10 bg-[#0a0a12] object-contain shadow-2xl ring-1 ring-white/10"
               loading="eager"
               decoding="async"
@@ -71,7 +72,7 @@
       {% if AUTHOR_PHOTO %}
         <section class="not-prose mb-10 md:mb-12" id="home-about-author" aria-labelledby="home-about-author-heading">
           <a
-            href="/en/about-the-author/"
+            href="/{{ L }}/about-the-author/"
             class="group flex flex-col gap-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-transparent p-5 shadow-lg shadow-black/20 transition hover:border-indigo-500/35 hover:bg-white/[0.08] sm:flex-row sm:items-center sm:gap-6 sm:p-6"
           >
             <div class="relative mx-auto shrink-0 sm:mx-0">
@@ -87,11 +88,11 @@
               />
             </div>
             <div class="min-w-0 flex-1 text-center sm:text-left">
-              <p id="home-about-author-heading" class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">About the author</p>
+              <p id="home-about-author-heading" class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Sobre el autor{% else %}About the author{% endif %}</p>
               <p class="font-display mt-2 text-lg font-semibold text-white">Yorgo Petsas</p>
-              <p class="mt-1 text-sm leading-relaxed text-slate-400">eCommerce, shipping real systems, and practical AI agents—why this book exists.</p>
+              <p class="mt-1 text-sm leading-relaxed text-slate-400">{% if L == 'es' %}eCommerce, sistemas reales y agentes de IA prácticos: por qué existe este libro.{% else %}eCommerce, shipping real systems, and practical AI agents—why this book exists.{% endif %}</p>
               <p class="mt-3 inline-flex items-center gap-1 text-sm font-medium text-indigo-400 group-hover:text-indigo-300">
-                Read full bio
+                {% if L == 'es' %}Leer biografía completa{% else %}Read full bio{% endif %}
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -103,19 +104,19 @@
 
       <!-- Social proof (placeholder — swap for real logos / quote) -->
       <section class="not-prose mb-12 md:mb-14" aria-labelledby="social-proof-heading">
-        <h2 id="social-proof-heading" class="sr-only">Social proof</h2>
-        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">Readers &amp; builders</p>
+        <h2 id="social-proof-heading" class="sr-only">{% if L == 'es' %}Prueba social{% else %}Social proof{% endif %}</h2>
+        <p class="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-slate-500">{% if L == 'es' %}Lectores y builders{% else %}Readers &amp; builders{% endif %}</p>
         <div class="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Python · any level</span>
-          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Open source</span>
-          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">Your machine / VM</span>
-          <span class="rounded-lg border border-dashed border-white/20 px-4 py-2 text-xs font-medium text-slate-500">Your logo here</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Python · cualquier nivel{% else %}Python · any level{% endif %}</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Código abierto{% else %}Open source{% endif %}</span>
+          <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Tu máquina / VM{% else %}Your machine / VM{% endif %}</span>
+          <span class="rounded-lg border border-dashed border-white/20 px-4 py-2 text-xs font-medium text-slate-500">{% if L == 'es' %}Tu logo aquí{% else %}Your logo here{% endif %}</span>
         </div>
         <figure class="mx-auto mt-8 max-w-2xl text-center">
           <blockquote class="font-display text-base font-medium leading-relaxed text-slate-300">
-            “Placeholder testimonial — replace with a real reader quote when you have one.”
+            {% if L == 'es' %}«Testimonio de ejemplo: sustitúyelo por una cita real cuando la tengas.»{% else %}“Placeholder testimonial — replace with a real reader quote when you have one.”{% endif %}
           </blockquote>
-          <figcaption class="mt-3 text-xs text-slate-500">— Early reader (name TBD)</figcaption>
+          <figcaption class="mt-3 text-xs text-slate-500">{% if L == 'es' %}— Lector anticipado (nombre pendiente){% else %}— Early reader (name TBD){% endif %}</figcaption>
         </figure>
       </section>
 
@@ -123,10 +124,10 @@
       <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">2-minute overview</h2>
-            <p class="mt-1 text-sm text-slate-400">A short intro to the book and the build track. Recording coming soon.</p>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">{% if L == 'es' %}Resumen de 2 minutos{% else %}2-minute overview{% endif %}</h2>
+            <p class="mt-1 text-sm text-slate-400">{% if L == 'es' %}Una breve introducción al libro y a la hoja de construcción. La grabación llegará pronto.{% else %}A short intro to the book and the build track. Recording coming soon.{% endif %}</p>
           </div>
-          <p class="text-xs text-slate-500">YouTube · Vimeo · or self-hosted MP4</p>
+          <p class="text-xs text-slate-500">{% if L == 'es' %}YouTube · Vimeo · o MP4 propio{% else %}YouTube · Vimeo · or self-hosted MP4{% endif %}</p>
         </div>
         <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a12] shadow-2xl ring-1 ring-white/5">
           <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-950/90 to-violet-950/80"></div>
@@ -152,7 +153,7 @@
                   <path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.5" />
                   <path d="M4 12h2M18 12h2M12 4v2M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
                 </svg>
-                Local LLM
+                {% if L == 'es' %}LLM local{% else %}Local LLM{% endif %}
               </span>
               <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
                 <svg class="h-4 w-4 shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -164,15 +165,15 @@
                 <svg class="h-4 w-4 shrink-0 text-indigo-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-                Video
+                {% if L == 'es' %}Vídeo{% else %}Video{% endif %}
               </span>
             </div>
             <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-indigo-400/60 backdrop-blur-sm">
               <svg class="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
             </div>
             <div>
-              <p class="font-display text-base font-semibold text-white">Video placeholder</p>
-              <p class="mt-1 max-w-md text-sm text-slate-400">Paste your embed or iframe in the template when the recording is ready.</p>
+              <p class="font-display text-base font-semibold text-white">{% if L == 'es' %}Marcador de vídeo{% else %}Video placeholder{% endif %}</p>
+              <p class="mt-1 max-w-md text-sm text-slate-400">{% if L == 'es' %}Pega tu embed o iframe en la plantilla cuando la grabación esté lista.{% else %}Paste your embed or iframe in the template when the recording is ready.{% endif %}</p>
             </div>
             <button
               type="button"
@@ -180,7 +181,7 @@
               disabled
               aria-disabled="true"
             >
-              Play (coming soon)
+              {% if L == 'es' %}Reproducir (pronto){% else %}Play (coming soon){% endif %}
             </button>
           </div>
           <!-- Hook: replace overlay block with iframe, e.g.:
@@ -194,10 +195,10 @@
         <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/[0.12] via-[#0c0c14] to-violet-500/[0.08] p-6 shadow-xl shadow-black/20 md:p-8">
           <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
             <div>
-              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">Free Resources</p>
-              <h2 id="companion-heading" class="font-display mt-2 text-xl font-bold text-white md:text-2xl">How AI agents work Blog</h2>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Recursos gratuitos{% else %}Free Resources{% endif %}</p>
+              <h2 id="companion-heading" class="font-display mt-2 text-xl font-bold text-white md:text-2xl">{% if L == 'es' %}Blog «Cómo funcionan los agentes de IA»{% else %}How AI agents work Blog{% endif %}</h2>
               <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
-                On this website you can find the latest news, tutorials, and resources about AI agents.
+                {% if L == 'es' %}En este sitio encontrarás noticias, tutoriales y recursos sobre agentes de IA.{% else %}On this website you can find the latest news, tutorials, and resources about AI agents.{% endif %}
               </p>
             </div>
           </div>
@@ -208,9 +209,9 @@
               class="group flex flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/45 hover:bg-white/[0.06]"
             >
               <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">English</span>
-              <span class="mt-2 font-medium text-white">Fragments &amp; deep chapters</span>
+              <span class="mt-2 font-medium text-white">{% if L == 'es' %}Fragmentos y capítulos en profundidad{% else %}Fragments &amp; deep chapters{% endif %}</span>
               <span class="mt-1 text-xs text-slate-500">howaiagentswork.com/en/</span>
-              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Open site →</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">{% if L == 'es' %}Abrir sitio →{% else %}Open site →{% endif %}</span>
             </a>
             <a
               href="https://howaiagentswork.com/es/"
@@ -218,18 +219,18 @@
               class="group flex flex-col rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/45 hover:bg-white/[0.06]"
             >
               <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400">Español</span>
-              <span class="mt-2 font-medium text-white">Entrada en castellano</span>
+              <span class="mt-2 font-medium text-white">{% if L == 'es' %}Entrada en castellano{% else %}Spanish entry point{% endif %}</span>
               <span class="mt-1 text-xs text-slate-500">howaiagentswork.com/es/</span>
-              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Abrir sitio →</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">{% if L == 'es' %}Abrir sitio →{% else %}Open site →{% endif %}</span>
             </a>
             <a
               href="#book-content"
               class="group flex flex-col rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 transition hover:border-indigo-400/35 hover:bg-white/[0.05]"
             >
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">Real World Project</span>
-              <span class="mt-2 font-medium text-slate-200">Make your own AI Agent - Full roadmap &amp; build steps</span>
-              <span class="mt-1 text-xs text-slate-500">Visit to get help with your first AI Agent</span>
-              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">Build Now →</span>
+              <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">{% if L == 'es' %}Proyecto real{% else %}Real World Project{% endif %}</span>
+              <span class="mt-2 font-medium text-slate-200">{% if L == 'es' %}Crea tu propio agente de IA: hoja de ruta y pasos de construcción{% else %}Make your own AI Agent - Full roadmap &amp; build steps{% endif %}</span>
+              <span class="mt-1 text-xs text-slate-500">{% if L == 'es' %}Visita la guía de esta página para tu primer agente{% else %}Visit to get help with your first AI Agent{% endif %}</span>
+              <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">{% if L == 'es' %}Construir ahora →{% else %}Build Now →{% endif %}</span>
             </a>
           </div>
         </div>
@@ -239,26 +240,26 @@
       <section class="not-prose mb-12 md:mb-16" id="news" aria-labelledby="news-heading">
         <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">Updates</p>
-            <h2 id="news-heading" class="font-display text-xl font-bold text-white">News</h2>
-            <p class="mt-1 text-sm text-slate-400">Releases, errata, and short notes. Replace placeholders when you have real announcements.</p>
+            <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{% if L == 'es' %}Novedades{% else %}Updates{% endif %}</p>
+            <h2 id="news-heading" class="font-display text-xl font-bold text-white">{% if L == 'es' %}Noticias{% else %}News{% endif %}</h2>
+            <p class="mt-1 text-sm text-slate-400">{% if L == 'es' %}Lanzamientos, erratas y notas breves. Sustituye los marcadores cuando tengas anuncios reales.{% else %}Releases, errata, and short notes. Replace placeholders when you have real announcements.{% endif %}</p>
           </div>
         </div>
         <ul class="mt-6 space-y-3">
           <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
-            <time class="text-xs font-medium text-slate-500" datetime="2026-04-01">2026-04-08</time>
-            <p class="mt-2 font-medium text-slate-200">Biggest AI Leak: Get the main conclusions out of the Cloude Leak</p>
-            <p class="mt-1 text-sm text-slate-500">Placeholder — describe your change log or editorial milestone here.</p>
+            <time class="text-xs font-medium text-slate-500" datetime="2026-04-08">2026-04-08</time>
+            <p class="mt-2 font-medium text-slate-200">{% if L == 'es' %}Gran filtración de IA: conclusiones clave (filtración tipo Claude){% else %}Biggest AI Leak: Get the main conclusions out of the Cloude Leak{% endif %}</p>
+            <p class="mt-1 text-sm text-slate-500">{% if L == 'es' %}Marcador — describe aquí tu hito editorial o cambio.{% else %}Placeholder — describe your change log or editorial milestone here.{% endif %}</p>
           </li>
           <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
             <time class="text-xs font-medium text-slate-500" datetime="2026-04-01">2026-04-01</time>
-            <p class="mt-2 font-medium text-slate-200">Site structure: companion links, build-track map, news block</p>
-            <p class="mt-1 text-sm text-slate-500">Placeholder — describe your change log or editorial milestone here.</p>
+            <p class="mt-2 font-medium text-slate-200">{% if L == 'es' %}Estructura del sitio: enlaces al blog, mapa de construcción, bloque de noticias{% else %}Site structure: companion links, build-track map, news block{% endif %}</p>
+            <p class="mt-1 text-sm text-slate-500">{% if L == 'es' %}Marcador — describe aquí tu hito editorial o cambio.{% else %}Placeholder — describe your change log or editorial milestone here.{% endif %}</p>
           </li>
           <li class="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 md:p-5">
-            <time class="text-xs font-medium text-slate-500" datetime="">TBD</time>
-            <p class="mt-2 font-medium text-slate-200">Next: first build-track repo drop (placeholder)</p>
-            <p class="mt-1 text-sm text-slate-500">Replace with a real date and summary when the codebase is public.</p>
+            <time class="text-xs font-medium text-slate-500" datetime="">{% if L == 'es' %}Por definir{% else %}TBD{% endif %}</time>
+            <p class="mt-2 font-medium text-slate-200">{% if L == 'es' %}Siguiente: primera publicación del repo de la hoja de construcción (marcador){% else %}Next: first build-track repo drop (placeholder){% endif %}</p>
+            <p class="mt-1 text-sm text-slate-500">{% if L == 'es' %}Sustituye por fecha y resumen reales cuando el código sea público.{% else %}Replace with a real date and summary when the codebase is public.{% endif %}</p>
           </li>
         </ul>
       </section>
@@ -266,49 +267,49 @@
       <!-- Build track: jump to step (anchors match ### headings in page body) -->
       <section class="not-prose mb-12 md:mb-16" id="build-steps-nav" aria-labelledby="steps-nav-heading">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">Build track</p>
-          <h2 id="steps-nav-heading" class="font-display text-xl font-bold text-white">Jump to a step (0–10)</h2>
-          <p class="mt-1 text-sm text-slate-400">Each step adds one layer: from a bare model call to production-shaped hardening. Links scroll inside this page.</p>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{% if L == 'es' %}Hoja de construcción{% else %}Build track{% endif %}</p>
+          <h2 id="steps-nav-heading" class="font-display text-xl font-bold text-white">{% if L == 'es' %}Ir a un paso (0–10){% else %}Jump to a step (0–10){% endif %}</h2>
+          <p class="mt-1 text-sm text-slate-400">{% if L == 'es' %}Cada paso añade una capa: desde una llamada mínima al modelo hasta endurecimiento orientado a producción. Los enlaces hacen scroll dentro de esta página.{% else %}Each step adds one layer: from a bare model call to production-shaped hardening. Links scroll inside this page.{% endif %}</p>
         </div>
         <div class="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-          <a href="#step-0" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">0</span>Bare model call</a>
-          <a href="#step-1" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">1</span>Project skeleton</a>
-          <a href="#step-2" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">2</span>Agent loop</a>
-          <a href="#step-3" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">3</span>Structured output</a>
-          <a href="#step-4" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">4</span>First tools</a>
-          <a href="#step-5" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">5</span>Commands</a>
-          <a href="#step-6" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">6</span>Memory</a>
-          <a href="#step-7" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">7</span>Planning</a>
-          <a href="#step-8" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">8</span>Coding agent</a>
-          <a href="#step-9" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">9</span>Multi-agent</a>
-          <a href="#step-10" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white sm:col-span-2 lg:col-span-1"><span class="block text-[10px] uppercase tracking-wider text-slate-500">10</span>Production</a>
+          <a href="#step-0" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">0</span>{% if L == 'es' %}Llamada al modelo{% else %}Bare model call{% endif %}</a>
+          <a href="#step-1" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">1</span>{% if L == 'es' %}Esqueleto del proyecto{% else %}Project skeleton{% endif %}</a>
+          <a href="#step-2" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">2</span>{% if L == 'es' %}Bucle del agente{% else %}Agent loop{% endif %}</a>
+          <a href="#step-3" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">3</span>{% if L == 'es' %}Salida estructurada{% else %}Structured output{% endif %}</a>
+          <a href="#step-4" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">4</span>{% if L == 'es' %}Primeras herramientas{% else %}First tools{% endif %}</a>
+          <a href="#step-5" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">5</span>{% if L == 'es' %}Comandos{% else %}Commands{% endif %}</a>
+          <a href="#step-6" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">6</span>{% if L == 'es' %}Memoria{% else %}Memory{% endif %}</a>
+          <a href="#step-7" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">7</span>{% if L == 'es' %}Planificación{% else %}Planning{% endif %}</a>
+          <a href="#step-8" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">8</span>{% if L == 'es' %}Agente de código{% else %}Coding agent{% endif %}</a>
+          <a href="#step-9" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white"><span class="block text-[10px] uppercase tracking-wider text-slate-500">9</span>{% if L == 'es' %}Multiagente{% else %}Multi-agent{% endif %}</a>
+          <a href="#step-10" class="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2.5 text-center text-xs font-medium text-slate-200 transition hover:border-indigo-400/40 hover:text-white sm:col-span-2 lg:col-span-1"><span class="block text-[10px] uppercase tracking-wider text-slate-500">10</span>{% if L == 'es' %}Producción{% else %}Production{% endif %}</a>
         </div>
         <p class="mt-4 text-center text-xs text-slate-500">
-          <a href="#book-content" class="font-medium text-indigo-400 hover:text-indigo-300">Skip to full write-up ↓</a>
+          <a href="#book-content" class="font-medium text-indigo-400 hover:text-indigo-300">{% if L == 'es' %}Ir al texto completo ↓{% else %}Skip to full write-up ↓{% endif %}</a>
         </p>
       </section>
 
       <section class="not-prose mb-12 md:mb-16" id="free-versions" aria-labelledby="free-versions-heading">
         <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">New pages</p>
-          <h2 id="free-versions-heading" class="font-display text-xl font-bold text-white">Get The Free Version of the Book</h2>
+          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{% if L == 'es' %}Nuevas páginas{% else %}New pages{% endif %}</p>
+          <h2 id="free-versions-heading" class="font-display text-xl font-bold text-white">{% if L == 'es' %}Consigue la versión gratuita del libro{% else %}Get The Free Version of the Book{% endif %}</h2>
         </div>
         <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-          <a href="/en/get-the-free-version-ceo/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/40 hover:bg-white/[0.06]">
-            <p class="text-xs uppercase tracking-wider text-indigo-400">For CEOs</p>
-            <p class="mt-2 font-medium text-white">AI Agents for CEOs</p>
+          <a href="/{{ L }}/get-the-free-version-ceo/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-indigo-400">{% if L == 'es' %}Para CEOs{% else %}For CEOs{% endif %}</p>
+            <p class="mt-2 font-medium text-white">{% if L == 'es' %}Agentes de IA para CEOs{% else %}AI Agents for CEOs{% endif %}</p>
           </a>
-          <a href="/en/get-the-free-version-agencies/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-400/40 hover:bg-white/[0.06]">
-            <p class="text-xs uppercase tracking-wider text-cyan-400">For Agencies</p>
-            <p class="mt-2 font-medium text-white">AI Agents for Agencies</p>
+          <a href="/{{ L }}/get-the-free-version-agencies/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-cyan-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-cyan-400">{% if L == 'es' %}Para agencias{% else %}For Agencies{% endif %}</p>
+            <p class="mt-2 font-medium text-white">{% if L == 'es' %}Agentes de IA para agencias{% else %}AI Agents for Agencies{% endif %}</p>
           </a>
-          <a href="/en/get-the-free-version-smb/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-amber-400/40 hover:bg-white/[0.06]">
-            <p class="text-xs uppercase tracking-wider text-amber-300">For SMB</p>
-            <p class="mt-2 font-medium text-white">AI Agents for Small and Medium Businesses</p>
+          <a href="/{{ L }}/get-the-free-version-smb/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-amber-400/40 hover:bg-white/[0.06]">
+            <p class="text-xs uppercase tracking-wider text-amber-300">{% if L == 'es' %}Para PYME{% else %}For SMB{% endif %}</p>
+            <p class="mt-2 font-medium text-white">{% if L == 'es' %}Agentes de IA para pymes{% else %}AI Agents for Small and Medium Businesses{% endif %}</p>
           </a>
-          <a href="/en/get-the-free-version-hybrid-light/" class="rounded-xl border border-slate-300/25 bg-white/90 p-4 transition hover:border-blue-400/60 hover:bg-white">
-            <p class="text-xs uppercase tracking-wider text-blue-600">AI Agents 101</p>
-            <p class="mt-2 font-medium text-slate-900">AI Agents for Begginers</p>
+          <a href="/{{ L }}/get-the-free-version-hybrid-light/" class="rounded-xl border border-slate-300/25 bg-white/90 p-4 transition hover:border-blue-400/60 hover:bg-white">
+            <p class="text-xs uppercase tracking-wider text-blue-600">{% if L == 'es' %}Agentes de IA 101{% else %}AI Agents 101{% endif %}</p>
+            <p class="mt-2 font-medium text-slate-900">{% if L == 'es' %}Agentes de IA para principiantes{% else %}AI Agents for Begginers{% endif %}</p>
           </a>
         </div>
       </section>

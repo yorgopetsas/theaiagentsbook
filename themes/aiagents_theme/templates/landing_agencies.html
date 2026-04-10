@@ -1,75 +1,76 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% set L = page.lang | default('en') %}
   <section class="not-prose mx-auto max-w-6xl">
     <div class="grid items-stretch gap-6 lg:grid-cols-5">
       <div class="rounded-3xl border border-white/10 bg-[#0b1220] p-7 shadow-2xl shadow-cyan-950/35 lg:col-span-3 md:p-10">
-        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">For Agencies</p>
-        <h1 class="font-display mt-3 text-3xl font-extrabold text-white md:text-5xl">Download "The AI Agents Book for Agencies"</h1>
-        <p class="mt-4 text-slate-300">After 20 years of experience in Business Management, IT development, Online Trade, AI gave me the oportunity to mix all the skills and knowedge gained into one powerfull mix and here is the result.</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.24em] text-cyan-300">{% if L == 'es' %}Para agencias{% else %}For Agencies{% endif %}</p>
+        <h1 class="font-display mt-3 text-3xl font-extrabold text-white md:text-5xl">{% if L == 'es' %}Descarga «The AI Agents Book para agencias»{% else %}Download "The AI Agents Book for Agencies"{% endif %}</h1>
+        <p class="mt-4 text-slate-300">{% if L == 'es' %}Tras 20 años en dirección de negocio, desarrollo IT y comercio online, la IA me permitió reunir habilidades y conocimiento en un solo conjunto potente; aquí está el resultado.{% else %}After 20 years of experience in Business Management, IT development, Online Trade, AI gave me the oportunity to mix all the skills and knowedge gained into one powerfull mix and here is the result.{% endif %}</p>
         <div class="mt-7 flex flex-wrap gap-2">
-          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">Built for service teams</span>
-          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">Operational playbooks</span>
-          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">Client delivery focus</span>
+          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">{% if L == 'es' %}Pensado para equipos de servicios{% else %}Built for service teams{% endif %}</span>
+          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">{% if L == 'es' %}Playbooks operativos{% else %}Operational playbooks{% endif %}</span>
+          <span class="rounded-full bg-cyan-500/15 px-3 py-1 text-xs font-medium text-cyan-200">{% if L == 'es' %}Enfoque en entrega al cliente{% else %}Client delivery focus{% endif %}</span>
         </div>
         <form class="mt-8 flex flex-col gap-3 sm:flex-row" data-lead-form data-audience="agencies" action="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=agencies_top_form" method="get" target="_blank">
           <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
           <input type="hidden" name="form_started_at" />
-          <input name="email" type="email" required placeholder="Agency email" class="w-full max-w-sm rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none" />
-          <button type="submit" class="rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400">Get The Free Version</button>
+          <input name="email" type="email" required placeholder="{% if L == 'es' %}Correo de la agencia{% else %}Agency email{% endif %}" class="w-full max-w-sm rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-cyan-400 focus:outline-none" />
+          <button type="submit" class="rounded-xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-400">{% if L == 'es' %}Consigue la versión gratuita{% else %}Get The Free Version{% endif %}</button>
         </form>
-        <p class="mt-3 text-xs text-slate-400">By submitting, you agree to receive the PDF and follow-up updates. See <a href="/en/privacy/" class="text-cyan-300 underline hover:text-cyan-200">Privacy</a>.</p>
+        <p class="mt-3 text-xs text-slate-400">{% if L == 'es' %}Al enviar, aceptas recibir el PDF y actualizaciones. Ver <a href="/{{ L }}/privacy/" class="text-cyan-300 underline hover:text-cyan-200">privacidad</a>.{% else %}By submitting, you agree to receive the PDF and follow-up updates. See <a href="/{{ L }}/privacy/" class="text-cyan-300 underline hover:text-cyan-200">Privacy</a>.{% endif %}</p>
       </div>
       <aside class="rounded-3xl border border-white/10 bg-white/[0.03] p-6 lg:col-span-2">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">As seen in (placeholder)</p>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">{% if L == 'es' %}Como visto en (marcador){% else %}As seen in (placeholder){% endif %}</p>
         <div class="mt-4 space-y-2">
-          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">Industry Podcast Placeholder</p>
-          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">Agency Community Placeholder</p>
-          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">Business Newsletter Placeholder</p>
+          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">{% if L == 'es' %}Podcast del sector (marcador){% else %}Industry Podcast Placeholder{% endif %}</p>
+          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">{% if L == 'es' %}Comunidad de agencias (marcador){% else %}Agency Community Placeholder{% endif %}</p>
+          <p class="rounded-lg border border-white/10 p-3 text-sm text-slate-300">{% if L == 'es' %}Newsletter de negocio (marcador){% else %}Business Newsletter Placeholder{% endif %}</p>
         </div>
       </aside>
     </div>
 
     <section class="mt-7 rounded-2xl border border-cyan-400/30 bg-cyan-500/10 p-6">
-      <h2 class="font-display text-2xl font-bold text-white">Proof first</h2>
+      <h2 class="font-display text-2xl font-bold text-white">{% if L == 'es' %}Pruebas primero{% else %}Proof first{% endif %}</h2>
       <div class="mt-5 grid gap-3 sm:grid-cols-3">
         <div class="rounded-xl border border-white/10 bg-black/20 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">Downloads</p>
+          <p class="text-xs uppercase tracking-wider text-slate-400">{% if L == 'es' %}Descargas{% else %}Downloads{% endif %}</p>
           <p class="mt-1 text-3xl font-bold text-white">1,000+</p>
         </div>
         <div class="rounded-xl border border-white/10 bg-black/20 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">Positive comments</p>
+          <p class="text-xs uppercase tracking-wider text-slate-400">{% if L == 'es' %}Comentarios positivos{% else %}Positive comments{% endif %}</p>
           <p class="mt-1 text-3xl font-bold text-white">200+</p>
         </div>
         <div class="rounded-xl border border-white/10 bg-black/20 p-4">
-          <p class="text-xs uppercase tracking-wider text-slate-400">Hours saved</p>
+          <p class="text-xs uppercase tracking-wider text-slate-400">{% if L == 'es' %}Horas ahorradas{% else %}Hours saved{% endif %}</p>
           <p class="mt-1 text-3xl font-bold text-white">20,000+</p>
         </div>
       </div>
-      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=agencies_proof_cta" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-cyan-900 transition hover:bg-slate-100">Download now</a>
+      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=agencies_proof_cta" target="_blank" rel="noopener noreferrer" class="mt-6 inline-flex rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-cyan-900 transition hover:bg-slate-100">{% if L == 'es' %}Descargar ahora{% else %}Download now{% endif %}</a>
     </section>
 
     <section class="mt-8 grid gap-5 md:grid-cols-3">
       <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 class="font-display text-lg font-bold text-white">Why agencies use it</h3>
+        <h3 class="font-display text-lg font-bold text-white">{% if L == 'es' %}Por qué lo usan las agencias{% else %}Why agencies use it{% endif %}</h3>
         <ul class="mt-3 space-y-2 text-sm text-slate-300">
-          <li>- Faster delivery cycles</li>
-          <li>- Better SOP consistency</li>
-          <li>- Easier onboarding for teams</li>
+          <li>{% if L == 'es' %}- Ciclos de entrega más rápidos{% else %}- Faster delivery cycles{% endif %}</li>
+          <li>{% if L == 'es' %}- Mejor consistencia en los SOP{% else %}- Better SOP consistency{% endif %}</li>
+          <li>{% if L == 'es' %}- Incorporación de equipos más sencilla{% else %}- Easier onboarding for teams{% endif %}</li>
         </ul>
       </div>
       <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 class="font-display text-lg font-bold text-white">Testimonials (placeholder)</h3>
-        <p class="mt-3 text-sm text-slate-300">“We shipped internal AI SOPs in 3 weeks instead of 3 months.”</p>
+        <h3 class="font-display text-lg font-bold text-white">{% if L == 'es' %}Testimonios (marcador){% else %}Testimonials (placeholder){% endif %}</h3>
+        <p class="mt-3 text-sm text-slate-300">{% if L == 'es' %}«Implementamos SOPs internas de IA en 3 semanas en lugar de 3 meses.»{% else %}“We shipped internal AI SOPs in 3 weeks instead of 3 months.”{% endif %}</p>
       </div>
       <div class="rounded-xl border border-white/10 bg-white/[0.03] p-5">
-        <h3 class="font-display text-lg font-bold text-white">FAQ (quick)</h3>
-        <p class="mt-3 text-sm text-slate-300"><strong class="text-white">Can we adapt for client niches?</strong><br />Yes, placeholders are ready for custom vertical playbooks.</p>
+        <h3 class="font-display text-lg font-bold text-white">{% if L == 'es' %}FAQ (rápido){% else %}FAQ (quick){% endif %}</h3>
+        <p class="mt-3 text-sm text-slate-300"><strong class="text-white">{% if L == 'es' %}¿Podemos adaptarlo a nichos de cliente?{% else %}Can we adapt for client niches?{% endif %}</strong><br />{% if L == 'es' %}Sí; los marcadores están listos para playbooks verticales a medida.{% else %}Yes, placeholders are ready for custom vertical playbooks.{% endif %}</p>
       </div>
     </section>
 
     <div class="mt-8 text-center">
-      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=agencies_final_cta" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-xl bg-gradient-to-r from-cyan-500 to-teal-400 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:from-cyan-400 hover:to-teal-300">Get The Free Version</a>
+      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=agencies_final_cta" target="_blank" rel="noopener noreferrer" class="inline-flex rounded-xl bg-gradient-to-r from-cyan-500 to-teal-400 px-6 py-3 text-sm font-semibold text-slate-900 transition hover:from-cyan-400 hover:to-teal-300">{% if L == 'es' %}Consigue la versión gratuita{% else %}Get The Free Version{% endif %}</a>
     </div>
   </section>
 {% endblock %}

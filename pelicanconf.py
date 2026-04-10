@@ -36,8 +36,7 @@ ARTICLE_SAVE_AS = "{lang}/{slug}/index.html"
 PAGE_PATHS = ["pages"]
 ARTICLE_PATHS = ["posts"]
 
-# Copy Spanish placeholder to /es/.
-STATIC_PATHS = ["es", "downloads", "images"]
+STATIC_PATHS = ["downloads", "images"]
 
 RELATIVE_URLS = True
 

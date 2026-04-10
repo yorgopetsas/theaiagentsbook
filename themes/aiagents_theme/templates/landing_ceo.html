@@ -1,91 +1,92 @@
 {% extends "base.html" %}
 
 {% block content %}
+  {% set L = page.lang | default('en') %}
   <section class="not-prose mx-auto max-w-5xl">
     <div class="relative overflow-hidden rounded-3xl border border-indigo-400/30 bg-gradient-to-br from-indigo-500/20 via-[#0b0b14] to-violet-500/20 p-7 shadow-2xl shadow-indigo-950/50 md:p-10">
       <div class="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-indigo-500/25 blur-2xl" aria-hidden="true"></div>
-      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-300">For CEOs</p>
-      <h1 class="font-display mt-3 text-3xl font-extrabold tracking-tight text-white md:text-5xl">Download "The AI Agents Book for CEOs"</h1>
-      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">Get the free version and turn AI agents into measurable business leverage: lower execution time, better organization, and stronger multi-channel communication.</p>
+      <p class="text-xs font-semibold uppercase tracking-[0.22em] text-indigo-300">{% if L == 'es' %}Para CEOs{% else %}For CEOs{% endif %}</p>
+      <h1 class="font-display mt-3 text-3xl font-extrabold tracking-tight text-white md:text-5xl">{% if L == 'es' %}Descarga «The AI Agents Book para CEOs»{% else %}Download "The AI Agents Book for CEOs"{% endif %}</h1>
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-300">{% if L == 'es' %}Consigue la versión gratuita y convierte los agentes de IA en palanca de negocio medible: menos tiempo de ejecución, mejor organización y comunicación multicanal más sólida.{% else %}Get the free version and turn AI agents into measurable business leverage: lower execution time, better organization, and stronger multi-channel communication.{% endif %}</p>
       <form class="mt-7 flex flex-col gap-3 sm:flex-row" data-lead-form data-audience="ceo" action="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=ceo_top_form" method="get" target="_blank">
-        <label class="sr-only" for="ceo-email">Work email</label>
+        <label class="sr-only" for="ceo-email">{% if L == 'es' %}Correo laboral{% else %}Work email{% endif %}</label>
         <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
         <input type="hidden" name="form_started_at" />
-        <input id="ceo-email" name="email" type="email" required placeholder="Work email" class="w-full rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none" />
-        <button type="submit" class="rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500">Get The Free Version</button>
+        <input id="ceo-email" name="email" type="email" required placeholder="{% if L == 'es' %}Correo laboral{% else %}Work email{% endif %}" class="w-full rounded-xl border border-white/15 bg-black/30 px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus:border-indigo-400 focus:outline-none" />
+        <button type="submit" class="rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500">{% if L == 'es' %}Consigue la versión gratuita{% else %}Get The Free Version{% endif %}</button>
       </form>
-      <p class="mt-3 text-xs text-slate-500">By submitting, you agree to receive the PDF and follow-up updates. See <a href="/en/privacy/" class="text-indigo-300 underline hover:text-indigo-200">Privacy</a>.</p>
+      <p class="mt-3 text-xs text-slate-500">{% if L == 'es' %}Al enviar, aceptas recibir el PDF y actualizaciones de seguimiento. Ver <a href="/{{ L }}/privacy/" class="text-indigo-300 underline hover:text-indigo-200">privacidad</a>.{% else %}By submitting, you agree to receive the PDF and follow-up updates. See <a href="/{{ L }}/privacy/" class="text-indigo-300 underline hover:text-indigo-200">Privacy</a>.{% endif %}</p>
       <div class="mt-6 flex flex-wrap gap-2">
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">No credit card</span>
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Instant PDF</span>
-        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Executive-focused</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">{% if L == 'es' %}Sin tarjeta{% else %}No credit card{% endif %}</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">{% if L == 'es' %}PDF al instante{% else %}Instant PDF{% endif %}</span>
+        <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">{% if L == 'es' %}Enfoque ejecutivo{% else %}Executive-focused{% endif %}</span>
       </div>
     </div>
 
     <div class="mt-8 grid gap-3 sm:grid-cols-3">
       <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Downloads</p>
+        <p class="text-xs uppercase tracking-wide text-slate-500">{% if L == 'es' %}Descargas{% else %}Downloads{% endif %}</p>
         <p class="mt-1 text-2xl font-bold text-white">1,000+</p>
       </div>
       <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Comments</p>
+        <p class="text-xs uppercase tracking-wide text-slate-500">{% if L == 'es' %}Comentarios{% else %}Comments{% endif %}</p>
         <p class="mt-1 text-2xl font-bold text-white">200+</p>
       </div>
       <div class="rounded-xl border border-white/10 bg-white/[0.04] p-4">
-        <p class="text-xs uppercase tracking-wide text-slate-500">Hours saved</p>
+        <p class="text-xs uppercase tracking-wide text-slate-500">{% if L == 'es' %}Horas ahorradas{% else %}Hours saved{% endif %}</p>
         <p class="mt-1 text-2xl font-bold text-white">20,000+</p>
       </div>
     </div>
 
     <section class="mt-10 rounded-2xl border border-white/10 bg-[#0d0d17]/90 p-6 md:p-8">
-      <h2 class="font-display text-2xl font-bold text-white">Why download this now</h2>
+      <h2 class="font-display text-2xl font-bold text-white">{% if L == 'es' %}Por qué descargarlo ahora{% else %}Why download this now{% endif %}</h2>
       <ul class="mt-5 grid gap-3 sm:grid-cols-2">
-        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">Save time through structured AI workflows.</li>
-        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">Better organization across teams and information.</li>
-        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">Dominate communication channels with repeatable systems.</li>
-        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">Calendar management automation opportunities.</li>
-        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300 sm:col-span-2">Optimize internal processes with clear AI implementation stages.</li>
+        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">{% if L == 'es' %}Ahorra tiempo con flujos de IA estructurados.{% else %}Save time through structured AI workflows.{% endif %}</li>
+        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">{% if L == 'es' %}Mejor organización entre equipos e información.{% else %}Better organization across teams and information.{% endif %}</li>
+        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">{% if L == 'es' %}Domina canales de comunicación con sistemas repetibles.{% else %}Dominate communication channels with repeatable systems.{% endif %}</li>
+        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300">{% if L == 'es' %}Oportunidades de automatizar la gestión de calendarios.{% else %}Calendar management automation opportunities.{% endif %}</li>
+        <li class="rounded-lg border border-white/10 bg-white/[0.04] p-4 text-slate-300 sm:col-span-2">{% if L == 'es' %}Optimiza procesos internos con fases claras de implementación de IA.{% else %}Optimize internal processes with clear AI implementation stages.{% endif %}</li>
       </ul>
       <div class="mt-6">
-        <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=ceo_mid_cta" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500">Get The Free Version</a>
+        <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=ceo_mid_cta" target="_blank" rel="noopener noreferrer" class="inline-flex items-center rounded-xl bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500">{% if L == 'es' %}Consigue la versión gratuita{% else %}Get The Free Version{% endif %}</a>
       </div>
     </section>
 
     <section class="mt-8 rounded-2xl border border-white/10 bg-[#0d0d17]/90 p-6 md:p-8">
-      <h2 class="font-display text-2xl font-bold text-white">What is inside the PDF</h2>
+      <h2 class="font-display text-2xl font-bold text-white">{% if L == 'es' %}Qué incluye el PDF{% else %}What is inside the PDF{% endif %}</h2>
       <div class="mt-5 grid gap-2 sm:grid-cols-2">
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">How Models Work</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">System Architecture</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">Environment & Setup</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">The Agent Loop</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">Tool Systems</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">Memory & Retrieval</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">Planning & Decomposition</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">Multi-Agent Systems</p>
-        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300 sm:col-span-2">Advanced Systems & Production</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Cómo funcionan los modelos{% else %}How Models Work{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Arquitectura del sistema{% else %}System Architecture{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Entorno y configuración{% else %}Environment & Setup{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}El bucle del agente{% else %}The Agent Loop{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Sistemas de herramientas{% else %}Tool Systems{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Memoria y recuperación{% else %}Memory & Retrieval{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Planificación y descomposición{% else %}Planning & Decomposition{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300">{% if L == 'es' %}Sistemas multiagente{% else %}Multi-Agent Systems{% endif %}</p>
+        <p class="rounded-lg border border-white/10 bg-white/[0.03] px-3 py-2 text-sm text-slate-300 sm:col-span-2">{% if L == 'es' %}Sistemas avanzados y producción{% else %}Advanced Systems & Production{% endif %}</p>
       </div>
     </section>
 
     <section class="mt-8 grid gap-6 md:grid-cols-2">
       <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
-        <h3 class="font-display text-xl font-bold text-white">Testimonials (placeholder)</h3>
-        <blockquote class="mt-4 border-l-2 border-indigo-400 pl-4 text-slate-300">“This framework helped me move from AI curiosity to practical execution in less than two weeks.” — CEO, Placeholder Inc.</blockquote>
-        <blockquote class="mt-4 border-l-2 border-indigo-400 pl-4 text-slate-300">“Clear, structured, and focused on business outcomes.” — Founder, Placeholder Labs</blockquote>
+        <h3 class="font-display text-xl font-bold text-white">{% if L == 'es' %}Testimonios (marcador){% else %}Testimonials (placeholder){% endif %}</h3>
+        <blockquote class="mt-4 border-l-2 border-indigo-400 pl-4 text-slate-300">{% if L == 'es' %}«Este marco me ayudó a pasar de la curiosidad por la IA a la ejecución práctica en menos de dos semanas.» — CEO, Empresa de ejemplo{% else %}“This framework helped me move from AI curiosity to practical execution in less than two weeks.” — CEO, Placeholder Inc.{% endif %}</blockquote>
+        <blockquote class="mt-4 border-l-2 border-indigo-400 pl-4 text-slate-300">{% if L == 'es' %}«Claro, estructurado y centrado en resultados de negocio.» — Fundador, Labs de ejemplo{% else %}“Clear, structured, and focused on business outcomes.” — Founder, Placeholder Labs{% endif %}</blockquote>
       </div>
       <div class="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
         <h3 class="font-display text-xl font-bold text-white">FAQ</h3>
         <div class="mt-4 space-y-3 text-sm">
-          <p><strong class="text-white">Is this really free?</strong><br /><span class="text-slate-300">Yes, this version is free. Placeholder: replace with your exact terms.</span></p>
-          <p><strong class="text-white">Do I need technical background?</strong><br /><span class="text-slate-300">No deep AI background required; business-first framing is included.</span></p>
-          <p><strong class="text-white">How fast can I apply it?</strong><br /><span class="text-slate-300">Most readers can begin applying ideas in 1-2 days.</span></p>
+          <p><strong class="text-white">{% if L == 'es' %}¿Es realmente gratis?{% else %}Is this really free?{% endif %}</strong><br /><span class="text-slate-300">{% if L == 'es' %}Sí, esta versión es gratuita. Marcador: sustituye por tus términos exactos.{% else %}Yes, this version is free. Placeholder: replace with your exact terms.{% endif %}</span></p>
+          <p><strong class="text-white">{% if L == 'es' %}¿Necesito formación técnica?{% else %}Do I need technical background?{% endif %}</strong><br /><span class="text-slate-300">{% if L == 'es' %}No hace falta un perfil profundo de IA; el enfoque es de negocio primero.{% else %}No deep AI background required; business-first framing is included.{% endif %}</span></p>
+          <p><strong class="text-white">{% if L == 'es' %}¿Qué tan rápido puedo aplicarlo?{% else %}How fast can I apply it?{% endif %}</strong><br /><span class="text-slate-300">{% if L == 'es' %}La mayoría puede empezar a aplicar ideas en 1–2 días.{% else %}Most readers can begin applying ideas in 1-2 days.{% endif %}</span></p>
         </div>
       </div>
     </section>
 
     <div class="mt-8 rounded-2xl border border-indigo-400/30 bg-indigo-500/10 p-6 text-center">
-      <p class="text-sm text-slate-300">Final CTA</p>
-      <h3 class="font-display mt-2 text-2xl font-bold text-white">Get The Free Version</h3>
-      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=ceo_final_cta" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex rounded-xl bg-white px-6 py-3 text-sm font-semibold text-indigo-900 transition hover:bg-slate-200">Download PDF now</a>
+      <p class="text-sm text-slate-300">{% if L == 'es' %}CTA final{% else %}Final CTA{% endif %}</p>
+      <h3 class="font-display mt-2 text-2xl font-bold text-white">{% if L == 'es' %}Consigue la versión gratuita{% else %}Get The Free Version{% endif %}</h3>
+      <a href="/downloads/TheAIAgentsBook-Introduction.pdf?utm_source=landing&utm_medium=cpa&utm_campaign=free_book&utm_content=ceo_final_cta" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex rounded-xl bg-white px-6 py-3 text-sm font-semibold text-indigo-900 transition hover:bg-slate-200">{% if L == 'es' %}Descargar PDF ahora{% else %}Download PDF now{% endif %}</a>
     </div>
   </section>
 {% endblock %}
