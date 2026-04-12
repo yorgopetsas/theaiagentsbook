@@ -127,73 +127,47 @@
         </figure>
       </section>
 
-      <!-- Video placeholder (embed URL when ready) -->
+      <!-- Overview video (YouTube Short — wide stage on desktop, full-width on mobile) -->
       <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">{% if L == 'es' %}Resumen de 2 minutos{% else %}2-minute overview{% endif %}</h2>
-            <p class="mt-1 text-sm text-slate-400">{% if L == 'es' %}Una breve introducción al libro y a la hoja de construcción. La grabación llegará pronto.{% else %}A short intro to the book and the build track. Recording coming soon.{% endif %}</p>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">{% if L == 'es' %}Resumen en vídeo{% else %}Video overview{% endif %}</h2>
+            <p class="mt-1 text-sm text-slate-400">
+              {% if L == 'es' %}
+              Una introducción breve al libro (YouTube Short). En móvil usa todo el ancho; en escritorio el marco es panorámico y el vídeo vertical va centrado.
+              {% else %}
+              A short intro to the book (YouTube Short). On mobile it uses the full width; on desktop the frame is wide with the vertical video centered.
+              {% endif %}
+            </p>
           </div>
-          <p class="text-xs text-slate-500">{% if L == 'es' %}YouTube · Vimeo · o MP4 propio{% else %}YouTube · Vimeo · or self-hosted MP4{% endif %}</p>
+          <a
+            href="https://www.youtube.com/shorts/1OUAUmv3KbQ"
+            class="shrink-0 text-xs font-medium text-indigo-400 hover:text-indigo-300"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {% if L == 'es' %}Abrir en YouTube →{% else %}Open on YouTube →{% endif %}
+          </a>
         </div>
-        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/10 bg-[#0a0a12] shadow-2xl ring-1 ring-white/5">
-          <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/80 via-slate-950/90 to-violet-950/80"></div>
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-5 p-6 text-center sm:gap-6 sm:p-8">
-            <!-- Stack / toolchain icons (decorative) -->
-            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3" aria-hidden="true">
-              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-cyan-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                  <path d="M7 7v10M17 7v10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5" />
-                </svg>
-                Stack
-              </span>
-              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-amber-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M8 9l-3 3 3 3M16 15l3-3-3-3M14 6l-4 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                Python
-              </span>
-              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-violet-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="1.5" />
-                  <path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="1.5" />
-                  <path d="M4 12h2M18 12h2M12 4v2M12 18v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.6" />
-                </svg>
-                {% if L == 'es' %}LLM local{% else %}Local LLM{% endif %}
-              </span>
-              <span class="inline-flex items-center gap-1.5 rounded-lg border border-white/15 bg-white/5 px-2.5 py-1.5 text-[11px] font-medium text-slate-300">
-                <svg class="h-4 w-4 shrink-0 text-emerald-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M13 10V3L4 14h7v7l9-11h-7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none" />
-                </svg>
-                APIs
-              </span>
-              <span class="inline-flex items-center gap-1.5 rounded-lg border border-indigo-400/30 bg-indigo-500/10 px-2.5 py-1.5 text-[11px] font-medium text-indigo-200">
-                <svg class="h-4 w-4 shrink-0 text-indigo-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                {% if L == 'es' %}Vídeo{% else %}Video{% endif %}
-              </span>
+        {#
+          Short is 9:16. Mobile: width = min(column, 92vh×9/16) so it fits the screen. md+: full-width 16:9 stage (max-w-6xl); Short centered at full stage height (pillarboxed).
+        #}
+        <div
+          class="relative mx-auto mt-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-950 via-[#0a0a12] to-slate-950 shadow-2xl ring-1 ring-white/5 aspect-[9/16] w-[min(100%,calc(92vh*9/16))] max-w-6xl md:aspect-video md:h-auto md:w-full md:max-h-[min(85vh,50rem)]"
+        >
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="relative h-full w-full md:h-full md:w-auto md:max-w-full md:aspect-[9/16]">
+              <iframe
+                class="absolute inset-0 h-full w-full rounded-lg md:rounded-md"
+                src="https://www.youtube.com/embed/1OUAUmv3KbQ?rel=0&modestbranding=1"
+                title="{% if L == 'es' %}Resumen del libro The AI Agents Book{% else %}The AI Agents Book — overview{% endif %}"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+                loading="lazy"
+              ></iframe>
             </div>
-            <div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/10 ring-2 ring-indigo-400/60 backdrop-blur-sm">
-              <svg class="ml-1 h-7 w-7 text-white" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
-            </div>
-            <div>
-              <p class="font-display text-base font-semibold text-white">{% if L == 'es' %}Marcador de vídeo{% else %}Video placeholder{% endif %}</p>
-              <p class="mt-1 max-w-md text-sm text-slate-400">{% if L == 'es' %}Pega tu embed o iframe en la plantilla cuando la grabación esté lista.{% else %}Paste your embed or iframe in the template when the recording is ready.{% endif %}</p>
-            </div>
-            <button
-              type="button"
-              class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-slate-200 backdrop-blur transition hover:bg-white/15"
-              disabled
-              aria-disabled="true"
-            >
-              {% if L == 'es' %}Reproducir (pronto){% else %}Play (coming soon){% endif %}
-            </button>
           </div>
-          <!-- Hook: replace overlay block with iframe, e.g.:
-          <iframe class="absolute inset-0 h-full w-full" src="https://www.youtube.com/embed/VIDEO_ID" title="Overview" allowfullscreen loading="lazy"></iframe>
-          -->
         </div>
       </section>
 
