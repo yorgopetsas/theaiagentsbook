@@ -158,8 +158,8 @@
           <div class="absolute inset-0 flex items-center justify-center">
             <div class="relative h-full w-full md:h-full md:w-auto md:max-w-full md:aspect-[9/16]">
               <iframe
-                class="absolute inset-0 h-full w-full rounded-lg md:rounded-md"
-                src="https://www.youtube.com/embed/1OUAUmv3KbQ?rel=0&modestbranding=1"
+                class="js-yt-hd1080 absolute inset-0 h-full w-full rounded-lg md:rounded-md"
+                src="https://www.youtube.com/embed/1OUAUmv3KbQ?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
                 title="{% if L == 'es' %}Resumen del libro The AI Agents Book{% else %}The AI Agents Book — overview{% endif %}"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerpolicy="strict-origin-when-cross-origin"
@@ -170,6 +170,27 @@
           </div>
         </div>
       </section>
+      <script>
+        (function () {
+          const players = document.querySelectorAll("iframe.js-yt-hd1080");
+          if (!players.length) return;
+          const cmd = JSON.stringify({ event: "command", func: "setPlaybackQuality", args: ["hd1080"] });
+          const cmdRange = JSON.stringify({ event: "command", func: "setPlaybackQualityRange", args: ["hd1080"] });
+          const trySet = (iframe) => {
+            try {
+              iframe.contentWindow && iframe.contentWindow.postMessage(cmd, "https://www.youtube.com");
+              iframe.contentWindow && iframe.contentWindow.postMessage(cmdRange, "https://www.youtube.com");
+            } catch (_) {}
+          };
+          players.forEach((iframe) => {
+            iframe.addEventListener("load", function () {
+              trySet(iframe);
+              setTimeout(function () { trySet(iframe); }, 800);
+              setTimeout(function () { trySet(iframe); }, 1800);
+            });
+          });
+        })();
+      </script>
 
       <!-- Companion site: howaiagentswork.com (nofollow outbound) -->
       <section class="not-prose mb-12 md:mb-16" id="companion-site" aria-labelledby="companion-heading">

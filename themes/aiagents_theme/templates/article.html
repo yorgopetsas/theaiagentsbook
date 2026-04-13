@@ -45,8 +45,8 @@
         {% if article.slug == 'chapter-0-introduction' %}
           <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
             <iframe
-              class="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/71g1OBHQTPg?rel=0&modestbranding=1"
+              class="js-yt-hd1080 absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/71g1OBHQTPg?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
               title="{% if L == 'es' %}Video del capítulo 0{% else %}Chapter 0 video{% endif %}"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -57,8 +57,8 @@
         {% elif article.slug == 'chapter-1-foundations' %}
           <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
             <iframe
-              class="absolute inset-0 h-full w-full"
-              src="https://www.youtube.com/embed/xUSVsQOPrA4?rel=0&modestbranding=1"
+              class="js-yt-hd1080 absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/xUSVsQOPrA4?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
               title="{% if L == 'es' %}Video del capítulo 1{% else %}Chapter 1 video{% endif %}"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerpolicy="strict-origin-when-cross-origin"
@@ -104,4 +104,25 @@
       {{ article.content | add_nofollow_howaiagentswork }}
     </div>
   </article>
+  <script>
+    (function () {
+      const players = document.querySelectorAll("iframe.js-yt-hd1080");
+      if (!players.length) return;
+      const cmd = JSON.stringify({ event: "command", func: "setPlaybackQuality", args: ["hd1080"] });
+      const cmdRange = JSON.stringify({ event: "command", func: "setPlaybackQualityRange", args: ["hd1080"] });
+      const trySet = (iframe) => {
+        try {
+          iframe.contentWindow && iframe.contentWindow.postMessage(cmd, "https://www.youtube.com");
+          iframe.contentWindow && iframe.contentWindow.postMessage(cmdRange, "https://www.youtube.com");
+        } catch (_) {}
+      };
+      players.forEach((iframe) => {
+        iframe.addEventListener("load", function () {
+          trySet(iframe);
+          setTimeout(function () { trySet(iframe); }, 800);
+          setTimeout(function () { trySet(iframe); }, 1800);
+        });
+      });
+    })();
+  </script>
 {% endblock %}
