@@ -138,6 +138,18 @@
               loading="lazy"
             ></iframe>
           </div>
+        {% elif article.slug == 'chapter-8-planning-decomposition' or article.slug == 'chapter-08-planning-decomposition' %}
+          <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
+            <iframe
+              class="js-yt-hd1080 absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/PP636Dm5lVU?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
+              title="{% if L == 'es' %}Video del capítulo 8{% else %}Chapter 8 video{% endif %}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
         {% else %}
           <div
             class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-white/20 bg-gradient-to-br from-indigo-950/40 via-[#0c0c14] to-violet-950/30 ring-1 ring-inset ring-white/5"
