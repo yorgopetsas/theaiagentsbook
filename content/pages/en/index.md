@@ -5,7 +5,7 @@ template: home
 url: en/
 save_as: en/index.html
 title: The AI Agents Book
-summary: Understand how AI agents work, build your own local agent (open source, private), and extract practical conclusions from recent model leaks.
+summary: Understand how AI Agents work. Build your own AI Agent. Choose between a local or cloud, open source or SaaS. Learn from latest model AI leaks.
 ---
 
 > **What this is:** one coherent path from *reading* how agents work to *building* one yourself—without hiding behind black-box APIs. The companion site [How AI agents work](https://howaiagentswork.com/en/) publishes longer fragments and chapter-style notes; **this page is the contract**: what you will understand, how the build track stages fit together, and where to read next.

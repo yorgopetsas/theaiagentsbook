@@ -36,7 +36,7 @@
                 href="/{{ L }}/chapters/"
                 class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/30 transition hover:from-indigo-500 hover:to-violet-500 hover:shadow-indigo-500/40"
               >
-                {% if L == 'es' %}Índice de capítulos (0–10){% else %}Chapter index (0–10){% endif %}
+                {% if L == 'es' %}Capítulos{% else %}Chapters{% endif %}
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
               </a>
               <a
@@ -51,13 +51,7 @@
                 href="/{{ L }}/exercise/"
                 class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-slate-200 transition hover:border-white/25 hover:text-white"
               >
-                {% if L == 'es' %}Pista de ejercicios{% else %}Exercise track{% endif %}
-              </a>
-              <a
-                href="#overview-video"
-                class="inline-flex items-center justify-center rounded-xl border border-dashed border-white/20 px-6 py-3 text-sm font-semibold text-slate-400"
-              >
-                {% if L == 'es' %}Ver resumen en vídeo{% else %}Watch overview{% endif %}
+                {% if L == 'es' %}Ejercicios{% else %}Exercises{% endif %}
               </a>
             </div>
           </div>
@@ -117,13 +111,12 @@
           <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Python · cualquier nivel{% else %}Python · any level{% endif %}</span>
           <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Código abierto{% else %}Open source{% endif %}</span>
           <span class="rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-xs font-medium text-slate-400 shadow-sm">{% if L == 'es' %}Tu máquina / VM{% else %}Your machine / VM{% endif %}</span>
-          <span class="rounded-lg border border-dashed border-white/20 px-4 py-2 text-xs font-medium text-slate-500">{% if L == 'es' %}Tu logo aquí{% else %}Your logo here{% endif %}</span>
         </div>
         <figure class="mx-auto mt-8 max-w-2xl text-center">
           <blockquote class="font-display text-base font-medium leading-relaxed text-slate-300">
-            {% if L == 'es' %}«Testimonio de ejemplo: sustitúyelo por una cita real cuando la tengas.»{% else %}“Placeholder testimonial — replace with a real reader quote when you have one.”{% endif %}
+            {% if L == 'es' %}«Estaba creando un camino de aprendizaje para enseñarme agentes de IA, cuando me di cuenta de que tenía algo que merecía la pena compartir.»{% else %}“I was creating a learning path to teach myself AI Agents, when I realized I had something worth sharing.”{% endif %}
           </blockquote>
-          <figcaption class="mt-3 text-xs text-slate-500">{% if L == 'es' %}— Lector anticipado (nombre pendiente){% else %}— Early reader (name TBD){% endif %}</figcaption>
+          <figcaption class="mt-3 text-xs text-slate-500">— Yorgo Petsas (CEO Amanita Solutions)</figcaption>
         </figure>
       </section>
 
@@ -131,12 +124,12 @@
       <section class="not-prose mb-12 md:mb-16" id="overview-video" aria-labelledby="overview-video-title">
         <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">{% if L == 'es' %}Resumen en vídeo{% else %}Video overview{% endif %}</h2>
+            <h2 id="overview-video-title" class="font-display text-lg font-bold text-white">{% if L == 'es' %}Vista general del libro{% else %}Book Overview{% endif %}</h2>
             <p class="mt-1 text-sm text-slate-400">
               {% if L == 'es' %}
-              Una introducción breve al libro (YouTube Short). En móvil usa todo el ancho; en escritorio el marco es panorámico y el vídeo vertical va centrado.
+              Unas palabras de Yepas, el agente de IA que creé con la misión de guiarte en tu aprendizaje sobre agentes de IA.
               {% else %}
-              A short intro to the book (YouTube Short). On mobile it uses the full width; on desktop the frame is wide with the vertical video centered.
+              A few words from Yepas, the AI Agent I created with the mission to lead you on your AI Agents learning journey.
               {% endif %}
             </p>
           </div>
@@ -153,7 +146,7 @@
           <iframe
             class="js-yt-hd1080 absolute inset-0 h-full w-full"
             src="https://www.youtube.com/embed/hF2IfPg5ASU?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
-            title="{% if L == 'es' %}Resumen del libro The AI Agents Book{% else %}The AI Agents Book — overview{% endif %}"
+            title="{% if L == 'es' %}Vista general del libro The AI Agents Book{% else %}The AI Agents Book — book overview{% endif %}"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             allowfullscreen
@@ -188,10 +181,10 @@
         <div class="rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/[0.12] via-[#0c0c14] to-violet-500/[0.08] p-6 shadow-xl shadow-black/20 md:p-8">
           <div class="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
             <div>
-              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Recursos gratuitos{% else %}Free Resources{% endif %}</p>
+              <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Explora contenido sobre IA{% else %}Explore AI content{% endif %}</p>
               <h2 id="companion-heading" class="font-display mt-2 text-xl font-bold text-white md:text-2xl">{% if L == 'es' %}Blog «Cómo funcionan los agentes de IA»{% else %}How AI agents work Blog{% endif %}</h2>
               <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-400">
-                {% if L == 'es' %}En este sitio encontrarás noticias, tutoriales y recursos sobre agentes de IA.{% else %}On this website you can find the latest news, tutorials, and resources about AI agents.{% endif %}
+                {% if L == 'es' %}Explora las últimas noticias, tutoriales y recursos sobre agentes de IA.{% else %}Explore the latest news, tutorials, and resources about AI agents.{% endif %}
               </p>
             </div>
           </div>
@@ -222,7 +215,7 @@
             >
               <span class="text-xs font-semibold uppercase tracking-wider text-slate-500">{% if L == 'es' %}Proyecto real{% else %}Real World Project{% endif %}</span>
               <span class="mt-2 font-medium text-slate-200">{% if L == 'es' %}Crea tu propio agente de IA: hoja de ruta y pasos de construcción{% else %}Make your own AI Agent - Full roadmap &amp; build steps{% endif %}</span>
-              <span class="mt-1 text-xs text-slate-500">{% if L == 'es' %}Abre la pista de ejercicios (pasos 0–10){% else %}Open the exercise track (steps 0–10){% endif %}</span>
+              <span class="mt-1 text-xs text-slate-500">{% if L == 'es' %}Abre los ejercicios (pasos 0–10){% else %}Open exercises (steps 0–10){% endif %}</span>
               <span class="mt-3 inline-flex items-center gap-1 text-xs font-medium text-indigo-400 group-hover:text-indigo-300">{% if L == 'es' %}Construir ahora →{% else %}Build Now →{% endif %}</span>
             </a>
           </div>
@@ -258,11 +251,8 @@
       </section>
 
       <section class="not-prose mb-12 md:mb-16" id="free-versions" aria-labelledby="free-versions-heading">
-        <div>
-          <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-slate-500">{% if L == 'es' %}Nuevas páginas{% else %}New pages{% endif %}</p>
-          <h2 id="free-versions-heading" class="font-display text-xl font-bold text-white">{% if L == 'es' %}Consigue la versión gratuita del libro{% else %}Get The Free Version of the Book{% endif %}</h2>
-        </div>
-        <div class="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <h2 id="free-versions-heading" class="sr-only">{% if L == 'es' %}Versiones gratuitas del libro{% else %}Free book versions{% endif %}</h2>
+        <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <a href="/{{ L }}/get-the-free-version-ceo/" class="rounded-xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-indigo-400/40 hover:bg-white/[0.06]">
             <p class="text-xs uppercase tracking-wider text-indigo-400">{% if L == 'es' %}Para CEOs{% else %}For CEOs{% endif %}</p>
             <p class="mt-2 font-medium text-white">{% if L == 'es' %}Agentes de IA para CEOs{% else %}AI Agents for CEOs{% endif %}</p>

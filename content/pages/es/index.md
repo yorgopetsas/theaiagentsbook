@@ -5,7 +5,7 @@ template: home
 url: es/
 save_as: es/index.html
 title: El libro de los agentes de IA
-summary: Entiende cómo funcionan los agentes de IA, construye el tuyo en local (código abierto, privado) y extrae conclusiones prácticas de filtraciones recientes de modelos.
+summary: Entiende cómo funcionan los agentes de IA. Construye el tuyo. Elige entre local o nube, código abierto o SaaS. Aprende de las últimas filtraciones de modelos de IA.
 ---
 
 > **Qué es esto:** un camino coherente desde *leer* cómo funcionan los agentes hasta *construir* uno propio — sin esconderse detrás de APIs caja negra. El sitio complementario [Cómo funcionan los agentes de IA](https://howaiagentswork.com/es/) publica fragmentos más largos y notas al estilo de capítulos; **esta página es el contrato**: qué vas a entender, cómo encajan las fases de la hoja de construcción y dónde seguir leyendo.
