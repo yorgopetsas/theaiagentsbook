@@ -42,29 +42,55 @@
             {% if L == 'es' %}Próximamente{% else %}Coming soon{% endif %}
           </span>
         </div>
-        <div
-          class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-white/20 bg-gradient-to-br from-indigo-950/40 via-[#0c0c14] to-violet-950/30 ring-1 ring-inset ring-white/5"
-          role="img"
-          aria-label="{% if L == 'es' %}Marcador de vídeo del capítulo{% else %}Chapter video placeholder{% endif %}"
-        >
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-            <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 text-slate-400">
-              <svg class="ml-0.5 h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <p class="text-sm font-medium text-slate-400">
-              {% if L == 'es' %}Espacio reservado para reproductor (YouTube, Vimeo o MP4){% else %}Embed placeholder (YouTube, Vimeo, or MP4){% endif %}
-            </p>
-            <p class="max-w-sm text-xs text-slate-600">
-              {% if L == 'es' %}
-              Sustituye este bloque en la plantilla por un iframe o componente de vídeo.
-              {% else %}
-              Replace this block in the template with an iframe or video component.
-              {% endif %}
-            </p>
+        {% if article.slug == 'chapter-0-introduction' %}
+          <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
+            <iframe
+              class="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/71g1OBHQTPg?rel=0&modestbranding=1"
+              title="{% if L == 'es' %}Video del capítulo 0{% else %}Chapter 0 video{% endif %}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
           </div>
-        </div>
+        {% elif article.slug == 'chapter-1-foundations' %}
+          <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
+            <iframe
+              class="absolute inset-0 h-full w-full"
+              src="https://www.youtube.com/embed/xUSVsQOPrA4?rel=0&modestbranding=1"
+              title="{% if L == 'es' %}Video del capítulo 1{% else %}Chapter 1 video{% endif %}"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        {% else %}
+          <div
+            class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-dashed border-white/20 bg-gradient-to-br from-indigo-950/40 via-[#0c0c14] to-violet-950/30 ring-1 ring-inset ring-white/5"
+            role="img"
+            aria-label="{% if L == 'es' %}Marcador de vídeo del capítulo{% else %}Chapter video placeholder{% endif %}"
+          >
+            <div class="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
+              <div class="flex h-14 w-14 items-center justify-center rounded-full border border-white/15 bg-white/5 text-slate-400">
+                <svg class="ml-0.5 h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <p class="text-sm font-medium text-slate-400">
+                {% if L == 'es' %}Espacio reservado para reproductor (YouTube, Vimeo o MP4){% else %}Embed placeholder (YouTube, Vimeo, or MP4){% endif %}
+              </p>
+              <p class="max-w-sm text-xs text-slate-600">
+                {% if L == 'es' %}
+                Sustituye este bloque en la plantilla por un iframe o componente de vídeo.
+                {% else %}
+                Replace this block in the template with an iframe or video component.
+                {% endif %}
+              </p>
+            </div>
+          </div>
+        {% endif %}
       </section>
     {% endif %}
 
