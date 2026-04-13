@@ -32,6 +32,28 @@
     ] %}
   {% endif %}
 
+  {# YouTube video IDs per chapter slug (same embeds as article.html); used for index thumbnails #}
+  {% set chapter_youtube = {
+    'chapter-0-introduction': '71g1OBHQTPg',
+    'chapter-00-introduction': '71g1OBHQTPg',
+    'chapter-1-foundations': 'xUSVsQOPrA4',
+    'chapter-01-foundations': 'xUSVsQOPrA4',
+    'chapter-2-how-models-work': 'S2crOO1IFRc',
+    'chapter-02-how-models-work': 'S2crOO1IFRc',
+    'chapter-3-system-architecture': '8oJD1EdtBPY',
+    'chapter-03-system-architecture': '8oJD1EdtBPY',
+    'chapter-4-environment-setup': '9t3EGZAGv1Y',
+    'chapter-04-environment-setup': '9t3EGZAGv1Y',
+    'chapter-5-the-agent-loop': 'pgiGD6kCK58',
+    'chapter-05-agent-loop': 'pgiGD6kCK58',
+    'chapter-6-tool-systems': 'iTr6VawscAk',
+    'chapter-06-tool-systems': 'iTr6VawscAk',
+    'chapter-7-memory-retrieval': 'RANSTwtohBY',
+    'chapter-07-memory-retrieval': 'RANSTwtohBY',
+    'chapter-8-planning-decomposition': 'PP636Dm5lVU',
+    'chapter-08-planning-decomposition': 'PP636Dm5lVU',
+  } %}
+
   <div class="not-prose mx-auto max-w-4xl">
     <header class="rounded-2xl border border-white/10 bg-white/[0.04] p-6 shadow-lg shadow-black/20 md:p-8">
       <p class="text-[11px] font-semibold uppercase tracking-[0.22em] text-indigo-400">{% if L == 'es' %}Índice{% else %}Index{% endif %}</p>
@@ -65,15 +87,48 @@
             {% for a in chs %}
               {% if a.slug == slug %}
           <li class="rounded-xl border border-white/10 bg-[#0a0a12]/80 p-4 shadow-inner shadow-black/20">
-            <div class="flex flex-wrap items-baseline justify-between gap-2">
-              <a href="/{{ L }}/{{ a.slug }}/" class="font-display text-base font-semibold text-indigo-300 hover:text-indigo-200 hover:underline">{{ a.title }}</a>
-              {% if a.metadata.get('chapter_status') %}
-                <span class="shrink-0 rounded-full border border-white/15 bg-white/5 px-2 py-0.5 text-xs font-medium text-slate-400">{{ a.metadata.get('chapter_status') }}</span>
+            <div class="flex gap-4">
+              {% set yt_id = chapter_youtube.get(a.slug) %}
+              {% if yt_id %}
+                <a
+                  href="/{{ L }}/{{ a.slug }}/#chapter-video-heading"
+                  class="group relative shrink-0 overflow-hidden rounded-lg border border-white/15 bg-black/40 aspect-video w-28 sm:w-36"
+                  aria-label="{% if L == 'es' %}Ver vídeo del capítulo: {{ a.title|e }}{% else %}Watch chapter video: {{ a.title|e }}{% endif %}"
+                >
+                  <img
+                    src="https://i.ytimg.com/vi/{{ yt_id }}/mqdefault.jpg"
+                    alt=""
+                    width="320"
+                    height="180"
+                    loading="lazy"
+                    decoding="async"
+                    class="h-full w-full object-cover transition duration-200 group-hover:scale-105 group-hover:opacity-95"
+                  />
+                  <span class="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/25 opacity-80 transition group-hover:bg-black/35 group-hover:opacity-100">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-black/50 text-white shadow-lg backdrop-blur-sm">
+                      <svg class="ml-0.5 h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+                    </span>
+                  </span>
+                </a>
+              {% else %}
+                <div
+                  class="flex aspect-video w-28 shrink-0 flex-col items-center justify-center gap-1 rounded-lg border border-dashed border-white/15 bg-white/[0.03] px-2 text-center sm:w-36"
+                  aria-hidden="true"
+                >
+                  <svg class="h-6 w-6 text-slate-600" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                  <span class="text-[10px] font-medium uppercase tracking-wider text-slate-600">{% if L == 'es' %}Vídeo{% else %}Video{% endif %}</span>
+                </div>
               {% endif %}
+              <div class="min-w-0 flex-1">
+                <div class="flex flex-wrap items-start justify-between gap-2">
+                  <a href="/{{ L }}/{{ a.slug }}/" class="font-display text-base font-semibold text-indigo-300 hover:text-indigo-200 hover:underline">{{ a.title }}</a>
+                  <span class="shrink-0 rounded-full border border-indigo-500/35 bg-indigo-500/10 px-2.5 py-0.5 text-xs font-semibold tracking-wide text-indigo-200/95">V 1.0</span>
+                </div>
+                {% if a.summary %}
+                  <p class="mt-2 text-sm text-slate-500">{{ a.summary|striptags }}</p>
+                {% endif %}
+              </div>
             </div>
-            {% if a.summary %}
-              <p class="mt-2 text-sm text-slate-500">{{ a.summary|striptags }}</p>
-            {% endif %}
           </li>
               {% endif %}
             {% endfor %}
