@@ -149,25 +149,16 @@
             {% if L == 'es' %}Abrir en YouTube →{% else %}Open on YouTube →{% endif %}
           </a>
         </div>
-        {#
-          Short is 9:16. Mobile: width = min(column, 92vh×9/16) so it fits the screen. md+: full-width 16:9 stage (max-w-6xl); Short centered at full stage height (pillarboxed).
-        #}
-        <div
-          class="relative mx-auto mt-5 overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-slate-950 via-[#0a0a12] to-slate-950 shadow-2xl ring-1 ring-white/5 aspect-[9/16] w-[min(100%,calc(92vh*9/16))] max-w-6xl md:aspect-video md:h-auto md:w-full md:max-h-[min(85vh,50rem)]"
-        >
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="relative h-full w-full md:h-full md:w-auto md:max-w-full md:aspect-[9/16]">
-              <iframe
-                class="js-yt-hd1080 absolute inset-0 h-full w-full rounded-lg md:rounded-md"
-                src="https://www.youtube.com/embed/hF2IfPg5ASU?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
-                title="{% if L == 'es' %}Resumen del libro The AI Agents Book{% else %}The AI Agents Book — overview{% endif %}"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-                loading="lazy"
-              ></iframe>
-            </div>
-          </div>
+        <div class="relative mt-5 aspect-video w-full overflow-hidden rounded-2xl border border-white/20 bg-[#0b0b12] shadow-2xl ring-1 ring-white/10">
+          <iframe
+            class="js-yt-hd1080 absolute inset-0 h-full w-full"
+            src="https://www.youtube.com/embed/hF2IfPg5ASU?rel=0&modestbranding=1&enablejsapi=1&vq=hd1080"
+            title="{% if L == 'es' %}Resumen del libro The AI Agents Book{% else %}The AI Agents Book — overview{% endif %}"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
         </div>
       </section>
       <script>
