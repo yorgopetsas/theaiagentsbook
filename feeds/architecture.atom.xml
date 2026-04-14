@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Architecture</title><link href="/" rel="alternate"/><link href="feeds/architecture.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Capítulo 3 — Arquitectura del sistema</title><link href="es/chapter-03-system-architecture/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:es/chapter-03-system-architecture/</id><content type="html">&lt;h2&gt;Vista de sistema&lt;/h2&gt;
+&lt;p&gt;Este capítulo describe cómo se ensamblan runtime, modelo, herramientas y políticas en un diseño coherente.&lt;/p&gt;
+&lt;h2&gt;Qué cubre&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Límites entre componentes&lt;/li&gt;
+&lt;li&gt;Puntos de observabilidad y control&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Architecture"/><category term="[Architecture"/><category term="Components]"/></entry></feed>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Memory</title><link href="/" rel="alternate"/><link href="feeds/memory.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Capítulo 7 — Memoria y recuperación</title><link href="es/chapter-07-memory-retrieval/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:es/chapter-07-memory-retrieval/</id><content type="html">&lt;h2&gt;Más allá del contexto inmediato&lt;/h2&gt;
+&lt;p&gt;Este capítulo trata la memoria como problema de selección: qué traer de vuelta y cuándo.&lt;/p&gt;
+&lt;h2&gt;Ideas clave&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ventana de contexto vs almacén externo&lt;/li&gt;
+&lt;li&gt;Recuperación ingenua frente a embeddings&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Memory"/><category term="[Memory"/><category term="Retrieval]"/></entry><entry><title>Chapter 7 — Memory &amp; Retrieval</title><link href="en/chapter-7-memory-retrieval/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:en/chapter-7-memory-retrieval/</id><content type="html">&lt;h2&gt;Scaling beyond context&lt;/h2&gt;
+&lt;p&gt;When the conversation grows, agents need selection and compression strategies to stay useful.&lt;/p&gt;
+&lt;p&gt;This chapter explains how to retrieve the right information and how to represent memory so it works reliably.&lt;/p&gt;</content><category term="Memory"/><category term="[RAG"/><category term="Memory"/><category term="Selection]"/></entry></feed>

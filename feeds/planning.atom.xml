@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>The AI Agents Book - Planning</title><link href="/" rel="alternate"/><link href="feeds/planning.atom.xml" rel="self"/><id>/</id><updated>2026-04-02T00:00:00+02:00</updated><entry><title>Capítulo 8 — Planificación y descomposición</title><link href="es/chapter-08-planning-decomposition/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:es/chapter-08-planning-decomposition/</id><content type="html">&lt;h2&gt;Dirección y estructura en el tiempo&lt;/h2&gt;
+&lt;p&gt;Este capítulo explica cómo los agentes usan planificación y descomposición para convertir objetivos ambiguos en pasos ejecutables.&lt;/p&gt;
+&lt;h2&gt;Qué aprenderás&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cuándo planificar&lt;/li&gt;
+&lt;li&gt;Cómo descomponer&lt;/li&gt;
+&lt;li&gt;Cómo evaluar planes a medida que avanza el bucle&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Planning"/><category term="[Planning"/><category term="Decomposition"/><category term="Reasoning]"/></entry><entry><title>Chapter 8 — Planning &amp; Decomposition</title><link href="en/chapter-8-planning-decomposition/" rel="alternate"/><published>2026-04-02T00:00:00+02:00</published><updated>2026-04-02T00:00:00+02:00</updated><author><name>EdelConnect</name></author><id>tag:None,2026-04-02:en/chapter-8-planning-decomposition/</id><content type="html">&lt;h2&gt;Direction and structure over time&lt;/h2&gt;
+&lt;p&gt;This chapter explains how agents use planning and decomposition to turn ambiguous goals into executable steps.&lt;/p&gt;
+&lt;h2&gt;What you will learn&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;When to plan&lt;/li&gt;
+&lt;li&gt;How to decompose&lt;/li&gt;
+&lt;li&gt;How to evaluate plans as the loop progresses&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Planning"/><category term="[Planning"/><category term="Decomposition"/><category term="Reasoning]"/></entry></feed>
